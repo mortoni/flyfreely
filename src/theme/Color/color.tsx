@@ -7,9 +7,10 @@ export interface ColorProps {
 }
 
 const ColorBox = styled<{ color: string }, 'div'>('div')`
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   background: ${({ color }) => color};
+  border-radius: 25px;
 `;
 
 const ColorName = styled<{}, 'div'>('div')`
@@ -22,15 +23,14 @@ const ColorName = styled<{}, 'div'>('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #EEE;
   border-top: 0;
 `;
 
 const Wrapper = styled<{}, 'div'>('div')`
-  margin: 15px;
+  margin: 30px;
   display: inline-block;
-  width: 200px;
-  height: 250px;
+  width: 100px;
+  height: 150px;
   background: #FFF;
 `;
 
@@ -38,12 +38,12 @@ const Color: React.SFC<ColorProps> = ({
   color,
   name,
 }) => (
-  <Wrapper>
-    <ColorBox color={color} />
-    <ColorName>
-      {name}
-    </ColorName>
-  </Wrapper>
-);
+    <Wrapper>
+      <ColorBox color={color} />
+      <ColorName>
+        {name}
+      </ColorName>
+    </Wrapper>
+  );
 
 export default Color;

@@ -5,7 +5,7 @@ import themeDecorator from "./theme-decorator";
 
 setOptions({
   addonPanelInRight: true,
-  name: "React UI Kit",
+  name: "Interactive Resume",
 });
 
 const req = require.context("../src", true, /.stories.tsx$/);
