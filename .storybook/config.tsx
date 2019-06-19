@@ -1,14 +1,14 @@
 
-import { setOptions } from "@storybook/addon-options";
-import { addDecorator, configure } from "@storybook/react";
-import themeDecorator from "./theme-decorator";
+import { setOptions } from '@storybook/addon-options';
+import { addDecorator, configure } from '@storybook/react';
+import themeDecorator from './theme-decorator';
 
 setOptions({
   addonPanelInRight: true,
-  name: "Interactive Resume",
+  name: 'Interactive Resume',
 });
 
-const req = require.context("../src", true, /.stories.tsx$/);
+const req = require.context('../src', true, /.stories.tsx$/);
 function loadStories() {
   req.keys().forEach((filename: string) => req(filename));
 }
