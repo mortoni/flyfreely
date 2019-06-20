@@ -1,7 +1,7 @@
-import { storiesOf } from '@storybook/react';
-import * as React from 'react';
-import Color from './Color';
-import theme from './index';
+import { storiesOf } from '@storybook/react'
+import * as React from 'react'
+import Color from './Color'
+import theme from './index'
 
 const stories = storiesOf('Themes/Colors', module);
 

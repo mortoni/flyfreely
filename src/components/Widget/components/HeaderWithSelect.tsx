@@ -1,25 +1,25 @@
-import Typography from '@material-ui/core/Typography'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import { withStyles } from '@material-ui/styles'
 import FormControl from '@material-ui/core/FormControl'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 
-export interface IHeaderWithSelectProps {
+export interface HeaderWithSelectProps {
     headerButtons?: any[]
     classes: any
 }
 
 const styles = {
+    button: {
+        color: '#fafafa !important',
+    },
     container: {
         display: 'flex',
         flexDirection: 'row',
     },
-    button: {
-        color: '#fafafa !important',
-    },
     title: {
-        flex: 0.7
+        flex: 0.7,
     },
     select: {
         flex: 0.3,
@@ -27,34 +27,34 @@ const styles = {
     selectInput: {
         '&svg': {
             borderColor: '#fafafa',
-            fill: '#fafafa',
             color: '#fafafa',
-        }
+            fill: '#fafafa',
+        },
 
     },
     selectField: {
-        backgroundColor: '#fafafa'
+        backgroundColor: '#fafafa',
     },
     menuItem: {
-        color: '#fafafa',
         '&$selected': {
             backgroundColor: '#fafafa',
         },
-    }
+        'color': '#fafafa',
+    },
 
 }
 
-const HeaderWithSelect: React.SFC<IHeaderWithSelectProps> = ({ classes,  }) => {
+const HeaderWithSelect: React.SFC<HeaderWithSelectProps> = ({ classes }) => {
 
     return (
         <div className={classes.container}>
             <div className={classes.title}>
-                <Typography variant="h5" component="h6">
+                <Typography variant='h5' component='h6'>
                     Test
                 </Typography>
             </div>
             <div className={classes.select}>
-                <FormControl className={classes.formControl} fullWidth>
+                <FormControl className={classes.formControl} fullWidth={true}>
                     {/* <InputLabel htmlFor="age-simple" classes={{ root: classes.inputLabel }}>Age</InputLabel> */}
                     <Select
                         value={10}
@@ -65,7 +65,7 @@ const HeaderWithSelect: React.SFC<IHeaderWithSelectProps> = ({ classes,  }) => {
                             id: 'age-simple',
                         }}
                     >
-                        <MenuItem value="">
+                        <MenuItem value=''>
                             <em>None</em>
                         </MenuItem>
                         <MenuItem value={10}>Ten</MenuItem>

@@ -1,4 +1,4 @@
-import styled from '../../../utils/styled-components';
+import styled from '../../../utils/styled-components'
 
 const StyledButton = styled<{ disabled: boolean }, 'button'>('button')`
   border-radius: 3px;
@@ -13,6 +13,6 @@ const StyledButton = styled<{ disabled: boolean }, 'button'>('button')`
     theme.colors.disabledColor :
     theme.colors.primaryColor
   };
-`;
+`
 
-export default StyledButton;
+export default StyledButton

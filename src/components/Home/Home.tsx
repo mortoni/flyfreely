@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 const Home: React.SFC<{}> = ({
     children,
@@ -6,6 +6,6 @@ const Home: React.SFC<{}> = ({
         <div>
             Page
         </div>
-    );
+    )
 
-export default Home;
+export default Home

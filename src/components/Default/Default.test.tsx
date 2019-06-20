@@ -1,14 +1,14 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import themed from '../../utils/themed';
-import Default from './Default';
+import themed from '../../utils/themed'
+import Default from './Default'
 
 describe('Default', () => {
     it('should render correctly', () => {
         const component = themed(
             <Default />,
-        ).toJSON();
+        ).toJSON()
 
-        expect(component).toMatchSnapshot();
-    });
-});
+        expect(component).toMatchSnapshot()
+    })
+})

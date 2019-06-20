@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import themed from '../../utils/themed';
-import Button from './Button';
+import themed from '../../utils/themed'
+import Button from './Button'
 
 describe('Button', () => {
   it('should render correctly', () => {
@@ -9,8 +9,8 @@ describe('Button', () => {
       <Button onClick={jest.fn}>
         Test
       </Button>,
-    ).toJSON();
+    ).toJSON()
 
-    expect(component).toMatchSnapshot();
-  });
-});
+    expect(component).toMatchSnapshot()
+  })
+})

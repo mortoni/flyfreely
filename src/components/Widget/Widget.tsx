@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 import { CardIcon, FooterButtons, HeaderButtons, HeaderWithSelect } from './components'
 
-export interface IWidgetProps {
+export interface WidgetProps {
     children?: any
     title: string
     subheader?: string
@@ -37,7 +37,7 @@ const styles = (theme) => ({
     },
 })
 
-const Widget: React.SFC<IWidgetProps> = ({ classes, title, subheader, children, titleWithSelect, ...props }) => {
+const Widget: React.SFC<WidgetProps> = ({ classes, title, subheader, children, titleWithSelect, ...props }) => {
     const getTitle = () => {
         if (titleWithSelect) {
             return <HeaderWithSelect />

@@ -1,14 +1,14 @@
-import * as React from "react";
+import * as React from 'react'
 
-import themed from "../../utils/themed";
-import Dashboard from "./Dashboard";
+import themed from '../../utils/themed'
+import Dashboard from './Dashboard'
 
-describe("Dashboard", () => {
-    it("should render correctly", () => {
+describe('Dashboard', () => {
+    it('should render correctly', () => {
         const component = themed(
             <Dashboard />,
-        ).toJSON();
+        ).toJSON()
 
-        expect(component).toMatchSnapshot();
-    });
-});
+        expect(component).toMatchSnapshot()
+    })
+})
