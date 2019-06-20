@@ -12,11 +12,6 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run lint && npm test"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leandrooriente/react-ui-kit-boilerplate.git"
