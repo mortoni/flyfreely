@@ -2,3 +2,6 @@ node_modules
 build
 .DS_Store
 .cache-loader
+yarn.lock
+yarn-error.log
+package-lock.json
