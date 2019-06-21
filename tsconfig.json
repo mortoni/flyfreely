@@ -8,7 +8,8 @@
     "allowJs": false,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDirs": ["src", ".storybook"],
+    // "rootDirs": ["src", "pamonha-storybook"],
+    "rootDirs": ["src"],
     "baseUrl": "./",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
@@ -21,12 +22,13 @@
     "allowSyntheticDefaultImports": false,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*", ".storybook/**/*"],
+  // "include": ["src/**/*", "pamonha-storybook/**/*"],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "build",
     "scripts",
-    ".storybook",
+    // "pamonha-storybook",
     "src/internal",
     "src/**/*.test.tsx",
     "src/**/*.stories.tsx"

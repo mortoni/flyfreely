@@ -1,4 +1,3 @@
-
 import { setOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
 import themeDecorator from './theme-decorator';
