@@ -1,7 +1,12 @@
-import * as React from 'react'
 import { Card, CardActions, CardContent, CardHeader } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
-import { CardIcon, FooterButtons, HeaderButtons, HeaderWithSelect } from './components'
+import * as React from 'react'
+import {
+    CardIcon,
+    FooterButtons,
+    HeaderButtons,
+    HeaderWithSelect,
+} from './components'
 
 export interface WidgetProps {
     children?: any
@@ -37,7 +42,14 @@ const styles = (theme: any) => ({
     },
 })
 
-const Widget: React.SFC<WidgetProps> = ({ classes, title, subheader, children, titleWithSelect, ...props }) => {
+const Widget: React.SFC<WidgetProps> = ({
+    classes,
+    title,
+    subheader,
+    children,
+    titleWithSelect,
+    ...props
+}) => {
     const getTitle = () => {
         if (titleWithSelect) {
             return <HeaderWithSelect />
@@ -58,11 +70,14 @@ const Widget: React.SFC<WidgetProps> = ({ classes, title, subheader, children, t
                 <CardContent classes={{ root: classes.cardContent }}>
                     {children}
                 </CardContent>
-                <CardActions disableSpacing={true} classes={{ root: classes.cardActions }}>
+                <CardActions
+                    disableSpacing={true}
+                    classes={{ root: classes.cardActions }}
+                >
                     <FooterButtons {...props} />
                 </CardActions>
             </Card>
-        </div >
+        </div>
     )
 }
 

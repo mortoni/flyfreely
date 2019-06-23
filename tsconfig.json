@@ -9,13 +9,6 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDirs": ["src", "storybook"],
-    // "rootDirs": ["src"],
-    // "baseUrl": "./",
-    // "paths": {
-    //   "appSrc/*": [
-    //     "src/*"
-    //   ]
-    // },
     "baseUrl": "./src",
     "paths": {
       "components/*": ["./components/*"],
@@ -35,7 +28,6 @@
     "experimentalDecorators": true
   },
   "include": ["src/**/*", "storybook/**/*"],
-  // "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "build",

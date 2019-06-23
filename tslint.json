@@ -8,10 +8,10 @@
   "rules": {
     "quotemark": [true, "single", "jsx-single"],
     "semicolon": [true, "never"],
-    "no-implicit-dependencies": [true, "dev"],
+    "no-implicit-dependencies": false,
     "interface-name": [true, "never-prefix"],
     "no-submodule-imports": false,
-    "jsx-no-multiline-js": false,
+    "jsx-no-multiline-js": false
   },
   "rulesDirectory": []
 }

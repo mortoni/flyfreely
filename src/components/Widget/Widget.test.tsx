@@ -5,10 +5,8 @@ import Widget from '../Widget'
 
 describe('Widget', () => {
     it('should render correctly', () => {
-        const component = themed(
-            <Widget />,
-        ).toJSON();
+        const component = themed(<Widget />).toJSON()
 
-        expect(component).toMatchSnapshot();
-    });
-});
+        expect(component).toMatchSnapshot()
+    })
+})

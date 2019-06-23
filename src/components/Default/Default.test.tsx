@@ -5,9 +5,7 @@ import Default from './Default'
 
 describe('Default', () => {
     it('should render correctly', () => {
-        const component = themed(
-            <Default />,
-        ).toJSON()
+        const component = themed(<Default />).toJSON()
 
         expect(component).toMatchSnapshot()
     })

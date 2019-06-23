@@ -6,12 +6,10 @@ export interface DefaultProps {
     something?: boolean
 }
 
-const Default: React.SFC<DefaultProps> = ({
-    something,
-}) => (
-        <Typography variant='h1' component='h2'>
-            Default
+const Default: React.SFC<DefaultProps> = ({ something }) => (
+    <Typography variant='h1' component='h2'>
+        Default
     </Typography>
-    )
+)
 
 export default Default

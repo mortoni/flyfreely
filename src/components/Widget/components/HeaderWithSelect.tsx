@@ -18,11 +18,11 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
     },
-    title: {
-        flex: 0.7,
-    },
-    select: {
-        flex: 0.3,
+    menuItem: {
+        '&$selected': {
+            backgroundColor: '#fafafa',
+        },
+        'color': '#fafafa',
     },
     selectInput: {
         '&svg': {
@@ -30,22 +30,19 @@ const styles = {
             color: '#fafafa',
             fill: '#fafafa',
         },
-
+    },
+    select: {
+        flex: 0.3,
     },
     selectField: {
         backgroundColor: '#fafafa',
     },
-    menuItem: {
-        '&$selected': {
-            backgroundColor: '#fafafa',
-        },
-        'color': '#fafafa',
+    title: {
+        flex: 0.7,
     },
-
 }
 
 const HeaderWithSelect: React.SFC<HeaderWithSelectProps> = ({ classes }) => {
-
     return (
         <div className={classes.container}>
             <div className={classes.title}>
@@ -58,8 +55,11 @@ const HeaderWithSelect: React.SFC<HeaderWithSelectProps> = ({ classes }) => {
                     {/* <InputLabel htmlFor="age-simple" classes={{ root: classes.inputLabel }}>Age</InputLabel> */}
                     <Select
                         value={10}
-                        onChange={() => { }}
-                        classes={{ root: classes.selectInput, select: classes.selectField }}
+                        onChange={() => {}}
+                        classes={{
+                            root: classes.selectInput,
+                            select: classes.selectField,
+                        }}
                         inputProps={{
                             name: 'age',
                             id: 'age-simple',

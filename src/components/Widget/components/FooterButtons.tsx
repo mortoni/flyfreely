@@ -9,12 +9,13 @@ interface FooterButtonsProps {
 
 const styles = {}
 
-const FooterButtons: React.SFC<FooterButtonsProps> = ({ classes, footerButtons }) => {
+const FooterButtons: React.SFC<FooterButtonsProps> = ({
+    classes,
+    footerButtons,
+}) => {
     if (footerButtons) {
         return footerButtons.map((item: any) => (
-            <IconButton onClick={item.action()}>
-                {item.component}
-            </IconButton>
+            <IconButton onClick={item.action()}>{item.component}</IconButton>
         ))
     }
     return null

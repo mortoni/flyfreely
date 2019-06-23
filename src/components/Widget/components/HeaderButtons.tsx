@@ -13,13 +13,23 @@ const styles = {
     },
 }
 
-const HeaderButtons: React.SFC<HeaderButtonsProps> = ({ classes, headerButtons }) => {
+const HeaderButtons: React.SFC<HeaderButtonsProps> = ({
+    classes,
+    headerButtons,
+}) => {
     if (headerButtons) {
-        return headerButtons && headerButtons.map((item: any) => (
-            <IconButton aria-label='Settings' classes={{ root: classes.button }} onClick={item.action()}>
-                {item.component}
-            </IconButton>
-        ))
+        return (
+            headerButtons &&
+            headerButtons.map((item: any) => (
+                <IconButton
+                    aria-label='Settings'
+                    classes={{ root: classes.button }}
+                    onClick={item.action()}
+                >
+                    {item.component}
+                </IconButton>
+            ))
+        )
     }
     return null
 }
