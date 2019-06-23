@@ -1,6 +1,6 @@
+import * as React from 'react'
 import { Card, CardActions, CardContent, CardHeader } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
-import * as React from 'react'
 import { CardIcon, FooterButtons, HeaderButtons, HeaderWithSelect } from './components'
 
 export interface WidgetProps {
@@ -11,7 +11,7 @@ export interface WidgetProps {
     titleWithSelect: boolean
 }
 
-const styles = (theme) => ({
+const styles = (theme: any) => ({
     card: {
         marginTop: '25px',
     },

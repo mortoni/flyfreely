@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import * as React from 'react'
-import Missions from '../../widgets/Mission'
-import Widget from '../Widget'
+import Missions from 'widgets/Mission'
+import Widget from 'components/Widget'
 
 export interface DashboardProps {
     /** Something */
