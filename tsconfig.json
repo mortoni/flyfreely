@@ -8,9 +8,21 @@
     "allowJs": false,
     "jsx": "react",
     "moduleResolution": "node",
-    // "rootDirs": ["src", "pamonha-storybook"],
-    "rootDirs": ["src"],
-    "baseUrl": "./",
+    "rootDirs": ["src", "storybook"],
+    // "rootDirs": ["src"],
+    // "baseUrl": "./",
+    // "paths": {
+    //   "appSrc/*": [
+    //     "src/*"
+    //   ]
+    // },
+    "baseUrl": "./src",
+    "paths": {
+      "components/*": ["./components/*"],
+      "theme/*": ["./theme/*"],
+      "forms/*": ["./forms/*"],
+      "widgets/*": ["./widgets/*"],
+    },
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -22,13 +34,13 @@
     "allowSyntheticDefaultImports": false,
     "experimentalDecorators": true
   },
-  // "include": ["src/**/*", "pamonha-storybook/**/*"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "storybook/**/*"],
+  // "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "build",
     "scripts",
-    // "pamonha-storybook",
+    "storybook",
     "src/internal",
     "src/**/*.test.tsx",
     "src/**/*.stories.tsx"
