@@ -1,6 +1,7 @@
 import { Card, CardActions, CardContent, CardHeader } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
+import styled from 'styled-components'
 import {
     CardIcon,
     FooterButtons,
@@ -42,6 +43,10 @@ const styles = (theme: any) => ({
     },
 })
 
+const CardContainer = styled.div`
+    position: relative;
+`
+
 const Widget: React.SFC<WidgetProps> = ({
     classes,
     title,
@@ -58,7 +63,7 @@ const Widget: React.SFC<WidgetProps> = ({
     }
 
     return (
-        <div className={classes.widgetContaier}>
+        <CardContainer>
             <CardIcon />
             <Card raised={true} classes={{ root: classes.card }}>
                 <CardHeader
@@ -77,7 +82,7 @@ const Widget: React.SFC<WidgetProps> = ({
                     <FooterButtons {...props} />
                 </CardActions>
             </Card>
-        </div>
+        </CardContainer>
     )
 }
 

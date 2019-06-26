@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IMissionsProps {
+export interface MissionsProps {}
 
-}
-
-const Missions: React.SFC<IMissionsProps> = ({ }) => {
+const Missions: React.SFC<MissionsProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'Missions'} headerButtons={headerButtons}>
-
+            Missions content
         </Widget>
-    );
+    )
 }
-export default Missions;
+export default Missions

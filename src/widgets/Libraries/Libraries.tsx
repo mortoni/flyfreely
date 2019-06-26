@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface ILibrariesProps {
+export interface LibrariesProps {}
 
-}
-
-const Libraries: React.SFC<ILibrariesProps> = ({ }) => {
+const Libraries: React.SFC<LibrariesProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'Libraries'} headerButtons={headerButtons}>
-
+            Libraries content
         </Widget>
-    );
+    )
 }
-export default Libraries;
+export default Libraries

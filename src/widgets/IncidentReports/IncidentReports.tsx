@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IIncidentReportsProps {
+export interface IncidentReportsProps {}
 
-}
-
-const IncidentReports: React.SFC<IIncidentReportsProps> = ({ }) => {
+const IncidentReports: React.SFC<IncidentReportsProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'IncidentReports'} headerButtons={headerButtons}>
-
+            Incident Reports content
         </Widget>
-    );
+    )
 }
-export default IncidentReports;
+export default IncidentReports

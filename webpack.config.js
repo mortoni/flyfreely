@@ -8,6 +8,7 @@ module.exports = {
             theme: path.resolve('src', 'theme'),
             forms: path.resolve('src', 'forms'),
             widgets: path.resolve('src', 'widgets'),
+            assets: path.resolve('src', 'assets'),
         },
     },
     module: {

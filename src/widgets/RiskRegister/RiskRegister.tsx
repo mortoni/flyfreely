@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IRiskRegisterProps {
+export interface RiskRegisterProps {}
 
-}
-
-const RiskRegister: React.SFC<IRiskRegisterProps> = ({ }) => {
+const RiskRegister: React.SFC<RiskRegisterProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'RiskRegister'} headerButtons={headerButtons}>
-
+            Risk Register content
         </Widget>
-    );
+    )
 }
-export default RiskRegister;
+export default RiskRegister

@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IBatterySetsProps {
+export interface BatterySetsProps {}
 
-}
-
-const BatterySets: React.SFC<IBatterySetsProps> = ({ }) => {
+const BatterySets: React.SFC<BatterySetsProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'BatterySets'} headerButtons={headerButtons}>
-
+            Battery Sets content
         </Widget>
-    );
+    )
 }
-export default BatterySets;
+export default BatterySets

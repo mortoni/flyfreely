@@ -11,7 +11,8 @@
     "no-implicit-dependencies": false,
     "interface-name": [true, "never-prefix"],
     "no-submodule-imports": false,
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "jsx-boolean-value": false
   },
   "rulesDirectory": []
 }

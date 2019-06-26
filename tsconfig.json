@@ -15,6 +15,7 @@
       "theme/*": ["./theme/*"],
       "forms/*": ["./forms/*"],
       "widgets/*": ["./widgets/*"],
+      "assets/*": ["./assets/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,

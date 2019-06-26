@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IOrganisationLinksProps {
+export interface OrganisationLinksProps {}
 
-}
-
-const OrganisationLinks: React.SFC<IOrganisationLinksProps> = ({ }) => {
+const OrganisationLinks: React.SFC<OrganisationLinksProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'OrganisationLinks'} headerButtons={headerButtons}>
-
+            Organisation Links content
         </Widget>
-    );
+    )
 }
-export default OrganisationLinks;
+export default OrganisationLinks

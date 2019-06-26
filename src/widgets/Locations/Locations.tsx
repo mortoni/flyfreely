@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface ILocationsProps {
+export interface LocationsProps {}
 
-}
-
-const Locations: React.SFC<ILocationsProps> = ({ }) => {
+const Locations: React.SFC<LocationsProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'Locations'} headerButtons={headerButtons}>
-
+            Location content
         </Widget>
-    );
+    )
 }
-export default Locations;
+export default Locations

@@ -1,20 +1,22 @@
-import * as React from 'react'
-import Widget from '../../components/Widget/index'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import Widget from 'components/Widget'
+import * as React from 'react'
 
-export interface IAircraftProps {
+export interface AircraftProps {}
 
-}
-
-const Aircraft: React.SFC<IAircraftProps> = ({ }) => {
+const Aircraft: React.SFC<AircraftProps> = ({}) => {
     const headerButtons = [
-        { component: <AddIcon />, action: () => { } },
+        {
+            action: () => () => {},
+            component: <AddIcon />,
+            key: 'addIcon',
+        },
     ]
 
     return (
         <Widget title={'Aircraft'} headerButtons={headerButtons}>
-
+            Aircraft content
         </Widget>
-    );
+    )
 }
-export default Aircraft;
+export default Aircraft

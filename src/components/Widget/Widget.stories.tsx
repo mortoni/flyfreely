@@ -21,8 +21,13 @@ storiesOf('Components/Widget', module)
             {
                 action: () => action('onVertButton'),
                 component: <MoreVertIcon />,
+                key: 'moreVertIcon',
             },
-            { component: <AddIcon />, action: () => action('onAddButton') },
+            {
+                action: () => action('onAddButton'),
+                component: <AddIcon />,
+                key: 'addIcon',
+            },
         ]
 
         return (
@@ -50,7 +55,11 @@ storiesOf('Components/Widget', module)
             { component: <ShareIcon />, action: () => action('onShareButton') },
         ]
         const headerButtons = [
-            { component: <AddIcon />, action: () => action('onAddButton') },
+            {
+                action: () => action('onAddButton'),
+                component: <AddIcon />,
+                key: 'addIcon',
+            },
         ]
 
         return (
@@ -73,7 +82,11 @@ storiesOf('Components/Widget', module)
         const subheader = text('Subheader', 'this is a mission subheader test')
 
         const headerButtons = [
-            { component: <AddIcon />, action: () => action('onAddButton') },
+            {
+                action: () => action('onAddButton'),
+                component: <AddIcon />,
+                key: 'addIcon',
+            },
         ]
 
         return (

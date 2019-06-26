@@ -1,1 +1,1 @@
-// export { default } from '../../../pamonha-storybook/widgets/Personnel/Mission';
+export { default } from './Personnel'

@@ -1,208 +1,120 @@
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import AddIcon from '@material-ui/icons/AddCircleOutline'
-import Widget from 'components/Widget'
+import { withStyles } from '@material-ui/styles'
+import Menu from 'components/Menu'
 import * as React from 'react'
+import Aircraft from 'widgets/Aircraft'
+import Batteries from 'widgets/Batteries'
+import BatterySets from 'widgets/BatterySets'
+import IncidentReports from 'widgets/IncidentReports'
+import Libraries from 'widgets/Libraries'
+import Locations from 'widgets/Locations'
+import Maintenance from 'widgets/Maintenance'
 import Missions from 'widgets/Mission'
+import MissionApprovals from 'widgets/MissionApprovals'
+import OrganisationLinks from 'widgets/OrganisationLinks'
+import Personnel from 'widgets/Personnel'
+import RiskRegister from 'widgets/RiskRegister'
 
-export interface DashboardProps {
-    something?: boolean
+interface DashboardProps {
+    classes: any
 }
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    },
+interface DashboardState {
+    menu: any
+}
+
+const styles = (theme: any) => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
+        marginLeft: 240,
     },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
-}))
-const Dashboard: React.SFC<DashboardProps> = ({ something }) => {
-    const headerButtons = [{ component: <AddIcon />, action: () => {} }]
+})
+class Dashboard extends React.Component<DashboardProps, DashboardState> {
+    constructor(props: DashboardProps) {
+        super(props)
+        this.state = {
+            menu: [
+                { label: 'Missions', icon: '', route: '', selected: true },
+                { label: 'Personnel', icon: '', route: '', selected: true },
+                { label: 'Locations', icon: '', route: '', selected: true },
+                { label: 'Approvals', icon: '', route: '', selected: true },
+                { label: 'RPA', icon: '', route: '', selected: true },
+                { label: 'Maintenance', icon: '', route: '', selected: true },
+                {
+                    icon: '',
+                    label: 'Flight Battery Sets',
+                    route: '',
+                    selected: true,
+                },
+                { label: 'Batteries', icon: '', route: '', selected: true },
+                { label: 'Labraries', icon: '', route: '', selected: true },
+                { label: 'Reporting', icon: '', route: '', selected: true },
+                {
+                    icon: '',
+                    label: 'Incident Reports',
+                    route: '',
+                    selected: true,
+                },
+                { label: 'Risk Register', icon: '', route: '', selected: true },
+            ],
+        }
+    }
 
-    return (
-        <Grid container={true} spacing={2}>
-            <Grid item={true} xs={12}>
-                <Missions />
-            </Grid>
+    public render() {
+        const { classes } = this.props
+        return (
+            <Grid container>
+                <Menu menu={this.state.menu} />
 
-            <Grid item={true} xs={12} md={6}>
-                <Widget
-                    title={'RPA(Remotely Piloted Aircraft)'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                <Grid container spacing={2} className={classes.root}>
+                    <Grid item xs={12}>
+                        <Missions />
+                    </Grid>
 
-            <Grid item={true} xs={12} md={6}>
-                <Widget title={'Personnel'} headerButtons={headerButtons}>
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Aircraft />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget title={'Batteries'} headerButtons={headerButtons}>
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Personnel />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget
-                    title={'Flight Battery Sets'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12}>
+                        <Batteries />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget
-                    title={'Mission Approvals'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12}>
+                        <BatterySets />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget title={'Maintenance'} headerButtons={headerButtons}>
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12}>
+                        <MissionApprovals />
+                    </Grid>
 
-            <Grid item={true} xs={12} md={6}>
-                <Widget title={'Locations'} headerButtons={headerButtons}>
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12}>
+                        <Maintenance />
+                    </Grid>
 
-            <Grid item={true} xs={12} md={6}>
-                <Widget
-                    title={'Document Libraries'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Locations />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget
-                    title={'Incident Reports'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Libraries />
+                    </Grid>
 
-            <Grid item={true} xs={12}>
-                <Widget title={'Risk Register'} headerButtons={headerButtons}>
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
-            </Grid>
+                    <Grid item xs={12}>
+                        <IncidentReports />
+                    </Grid>
 
-            <Grid item={true} xs={12} md={6}>
-                <Widget
-                    title={'Organisation Links'}
-                    headerButtons={headerButtons}
-                >
-                    <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                    >
-                        This impressive paella is a perfect party dish and a fun
-                        meal to cook together with your guests. Add 1 cup of
-                        frozen peas along with the mussels, if you like.
-                    </Typography>
-                </Widget>
+                    <Grid item xs={12}>
+                        <RiskRegister />
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <OrganisationLinks />
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
-    )
+        )
+    }
 }
-export default Dashboard
+export default withStyles(styles)(Dashboard)
