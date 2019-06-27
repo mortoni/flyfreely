@@ -18,103 +18,144 @@ import RiskRegister from 'widgets/RiskRegister'
 interface DashboardProps {
     classes: any
 }
-interface DashboardState {
-    menu: any
-}
 
 const styles = (theme: any) => ({
     root: {
         marginLeft: 240,
     },
 })
-class Dashboard extends React.Component<DashboardProps, DashboardState> {
-    constructor(props: DashboardProps) {
-        super(props)
-        this.state = {
-            menu: [
-                { label: 'Missions', icon: '', route: '', selected: true },
-                { label: 'Personnel', icon: '', route: '', selected: true },
-                { label: 'Locations', icon: '', route: '', selected: true },
-                { label: 'Approvals', icon: '', route: '', selected: true },
-                { label: 'RPA', icon: '', route: '', selected: true },
-                { label: 'Maintenance', icon: '', route: '', selected: true },
-                {
-                    icon: '',
-                    label: 'Flight Battery Sets',
-                    route: '',
-                    selected: true,
-                },
-                { label: 'Batteries', icon: '', route: '', selected: true },
-                { label: 'Labraries', icon: '', route: '', selected: true },
-                { label: 'Reporting', icon: '', route: '', selected: true },
-                {
-                    icon: '',
-                    label: 'Incident Reports',
-                    route: '',
-                    selected: true,
-                },
-                { label: 'Risk Register', icon: '', route: '', selected: true },
-            ],
-        }
-    }
 
-    public render() {
-        const { classes } = this.props
-        return (
-            <Grid container>
-                <Menu menu={this.state.menu} />
+const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
+    const [menu, setMenu] = React.useState([
+        {
+            icon: '',
+            key: 'approvals',
+            label: 'Approvals',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'batteries',
+            label: 'Batteries',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'batterySets',
+            label: 'Flight Battery Sets',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'incident',
+            label: 'Incident Reports',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'libraries',
+            label: 'Libraries',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'locations',
+            label: 'Locations',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'maintenance',
+            label: 'Maintenance',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'mission',
+            label: 'Missions',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'personnel',
+            label: 'Personnel',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'reporting',
+            label: 'Reporting',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'risk',
+            label: 'Risk Register',
+            selected: true,
+        },
+        {
+            icon: '',
+            key: 'rpa',
+            label: 'RPA',
+            selected: true,
+        },
+    ])
 
-                <Grid container spacing={2} className={classes.root}>
-                    <Grid item xs={12}>
-                        <Missions />
-                    </Grid>
+    return (
+        <Grid container>
+            <Menu menu={menu} setMenu={setMenu} />
 
-                    <Grid item xs={12} md={6}>
-                        <Aircraft />
-                    </Grid>
+            <Grid container spacing={2} className={classes.root}>
+                <Grid item xs={12}>
+                    <Missions />
+                </Grid>
 
-                    <Grid item xs={12} md={6}>
-                        <Personnel />
-                    </Grid>
+                <Grid item xs={12} md={6}>
+                    <Aircraft />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <Batteries />
-                    </Grid>
+                <Grid item xs={12} md={6}>
+                    <Personnel />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <BatterySets />
-                    </Grid>
+                <Grid item xs={12}>
+                    <Batteries />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <MissionApprovals />
-                    </Grid>
+                <Grid item xs={12}>
+                    <BatterySets />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <Maintenance />
-                    </Grid>
+                <Grid item xs={12}>
+                    <MissionApprovals />
+                </Grid>
 
-                    <Grid item xs={12} md={6}>
-                        <Locations />
-                    </Grid>
+                <Grid item xs={12}>
+                    <Maintenance />
+                </Grid>
 
-                    <Grid item xs={12} md={6}>
-                        <Libraries />
-                    </Grid>
+                <Grid item xs={12} md={6}>
+                    <Locations />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <IncidentReports />
-                    </Grid>
+                <Grid item xs={12} md={6}>
+                    <Libraries />
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <RiskRegister />
-                    </Grid>
+                <Grid item xs={12}>
+                    <IncidentReports />
+                </Grid>
 
-                    <Grid item xs={12} md={6}>
-                        <OrganisationLinks />
-                    </Grid>
+                <Grid item xs={12}>
+                    <RiskRegister />
+                </Grid>
+
+                <Grid item xs={12} md={6}>
+                    <OrganisationLinks />
                 </Grid>
             </Grid>
-        )
-    }
+        </Grid>
+    )
+    // }
 }
 export default withStyles(styles)(Dashboard)

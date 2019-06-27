@@ -9,6 +9,7 @@ import * as React from 'react'
 export interface MenuOptionsProps {
     classes: any
     menu: any
+    setMenu: any
 }
 
 const styles = (theme: any) => ({
@@ -22,19 +23,30 @@ const styles = (theme: any) => ({
     },
 })
 
-const MenuOptions: React.SFC<MenuOptionsProps> = ({ classes, menu }) => {
+const MenuOptions: React.SFC<MenuOptionsProps> = ({
+    classes,
+    menu,
+    setMenu,
+}) => {
+    const menuChange = (item: any, index: number) => {
+        menu[index] = { ...item, selected: !item.selected }
+        setMenu([...menu])
+    }
+
     return (
         <MenuList>
-            {menu.map((item: any) => (
+            {menu.map((item: any, index: number) => (
                 <MenuItem key={item.label}>
                     <DraftsIcon />
                     <FormControlLabel
                         className={classes.label}
-                        value='start'
+                        value={item.key}
                         control={
                             <Checkbox
                                 color='primary'
+                                checked={item.selected}
                                 className={classes.checkbox}
+                                onChange={() => menuChange(item, index)}
                             />
                         }
                         label={item.label}

@@ -3,9 +3,11 @@ import demo = require('assets/demo.png')
 import * as React from 'react'
 import styled from 'styled-components'
 import MenuOptions from './components/MenuOptions'
+import OrganisationSelect from './components/OrganisationSelect'
 
 export interface MenuProps {
     menu: any
+    setMenu: any
 }
 
 const MenuContainer = styled.div`
@@ -36,23 +38,25 @@ const Logo = styled.img.attrs({
 `
 
 const LogoContainer = styled(Paper)`
+    flex-direction: column;
     height: 180px;
     align-items: center;
     justify-content: center;
     display: flex;
 `
 
-const Menu: React.SFC<MenuProps> = ({ menu }) => {
+const Menu: React.SFC<MenuProps> = ({ ...props }) => {
     return (
         <MenuContainer>
             <LogoContainer>
                 <Logo />
+                <OrganisationSelect />
             </LogoContainer>
 
             <Divider />
 
             <Paper>
-                <MenuOptions menu={menu} />
+                <MenuOptions {...props} />
             </Paper>
 
             <Divider />
