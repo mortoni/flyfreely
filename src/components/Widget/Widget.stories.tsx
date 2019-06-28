@@ -11,6 +11,15 @@ import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import Widget from './Widget'
 
+const item = {
+    component: null,
+    icon: '',
+    key: 'mission',
+    label: 'Missions',
+    selected: true,
+    size: {},
+}
+
 storiesOf('Components/Widget', module)
     .addDecorator(jsxDecorator)
     .addDecorator(withKnobs)
@@ -32,6 +41,7 @@ storiesOf('Components/Widget', module)
 
         return (
             <Widget
+                item={item}
                 title={title}
                 subheader={subheader}
                 headerButtons={headerButtons}
@@ -64,6 +74,7 @@ storiesOf('Components/Widget', module)
 
         return (
             <Widget
+                item={item}
                 title={title}
                 subheader={subheader}
                 footerButtons={footerButtons}
@@ -91,6 +102,7 @@ storiesOf('Components/Widget', module)
 
         return (
             <Widget
+                item={item}
                 title={title}
                 titleWithSelect={true}
                 subheader={subheader}
