@@ -2,19 +2,21 @@ import AddIcon from '@material-ui/icons/AddCircleOutline'
 import Widget from 'components/Widget'
 import * as React from 'react'
 
-export interface AircraftProps {}
+export interface AircraftProps {
+    item: any
+}
 
-const Aircraft: React.SFC<AircraftProps> = ({}) => {
+const Aircraft: React.SFC<AircraftProps> = ({ item }) => {
     const headerButtons = [
         {
-            action: () => () => {},
+            action: () => {},
             component: <AddIcon />,
             key: 'addIcon',
         },
     ]
 
     return (
-        <Widget title={'Aircraft'} headerButtons={headerButtons}>
+        <Widget title={'Aircraft'} headerButtons={headerButtons} item={item}>
             Aircraft content
         </Widget>
     )

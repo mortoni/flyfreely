@@ -1,6 +1,13 @@
-import CardIcon from './CardIcon'
+import AnimateWidget from './AnimateWidget'
 import FooterButtons from './FooterButtons'
-import HeaderButtons from './HeaderButtons'
 import HeaderWithSelect from './HeaderWithSelect'
+import WidgetHeader from './WidgetHeader'
+import WidgetIcon from './WidgetIcon'
 
-export { HeaderButtons, FooterButtons, CardIcon, HeaderWithSelect }
+export {
+    WidgetHeader,
+    FooterButtons,
+    WidgetIcon,
+    HeaderWithSelect,
+    AnimateWidget,
+}

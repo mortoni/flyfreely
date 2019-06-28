@@ -2,19 +2,21 @@ import AddIcon from '@material-ui/icons/AddCircleOutline'
 import Widget from 'components/Widget'
 import * as React from 'react'
 
-export interface MaintenanceProps {}
+export interface MaintenanceProps {
+    item: any
+}
 
-const Maintenance: React.SFC<MaintenanceProps> = ({}) => {
+const Maintenance: React.SFC<MaintenanceProps> = ({ item }) => {
     const headerButtons = [
         {
-            action: () => () => {},
+            action: () => {},
             component: <AddIcon />,
             key: 'addIcon',
         },
     ]
 
     return (
-        <Widget title={'Maintenance'} headerButtons={headerButtons}>
+        <Widget title={'Maintenance'} headerButtons={headerButtons} item={item}>
             Maintenance content
         </Widget>
     )

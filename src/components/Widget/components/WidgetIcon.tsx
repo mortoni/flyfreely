@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 
-interface CardIconProps {
+interface WidgetIconProps {
     classes: any
 }
 
@@ -16,8 +16,8 @@ const styles = {
     },
 }
 
-const CardIcon: React.SFC<CardIconProps> = ({ classes }) => (
+const WidgetIcon: React.SFC<WidgetIconProps> = ({ classes }) => (
     <div className={classes.icon} />
 )
 
-export default withStyles(styles)(CardIcon)
+export default withStyles(styles)(WidgetIcon)

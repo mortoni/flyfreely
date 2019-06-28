@@ -1,12 +1,15 @@
 import { Card, CardActions, CardContent, CardHeader } from '@material-ui/core'
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 import styled from 'styled-components'
 import {
-    CardIcon,
+    AnimateWidget,
     FooterButtons,
-    HeaderButtons,
     HeaderWithSelect,
+    WidgetHeader,
+    WidgetIcon,
 } from './components'
 
 export interface WidgetProps {
@@ -15,16 +18,11 @@ export interface WidgetProps {
     subheader?: string
     classes: any
     titleWithSelect: boolean
+    item: any
 }
 
 const styles = (theme: any) => ({
-    card: {
-        marginTop: '25px',
-    },
     cardActions: {
-        backgroundColor: '#fafafa',
-    },
-    cardContent: {
         backgroundColor: '#fafafa',
     },
     header: {
@@ -43,8 +41,24 @@ const styles = (theme: any) => ({
     },
 })
 
-const CardContainer = styled.div`
+const WidgetContainer = styled.div`
     position: relative;
+`
+
+const WidgetContent = styled(CardContent)`
+    background-color: #fafafa;
+`
+
+const WidgetCard = styled(Card).attrs({
+    raised: true,
+})`
+    margin-top: 25px;
+`
+
+const WidgetActions = styled(CardActions).attrs({
+    disableSpacing: true,
+})`
+    margin-top: 25px;
 `
 
 const Widget: React.SFC<WidgetProps> = ({
@@ -53,6 +67,7 @@ const Widget: React.SFC<WidgetProps> = ({
     subheader,
     children,
     titleWithSelect,
+    item,
     ...props
 }) => {
     const getTitle = () => {
@@ -63,27 +78,35 @@ const Widget: React.SFC<WidgetProps> = ({
     }
 
     return (
-        <CardContainer>
-            <CardIcon />
-            <Card raised={true} classes={{ root: classes.card }}>
-                <CardHeader
-                    action={<HeaderButtons {...props} />}
-                    classes={{ ...classes, root: classes.header }}
-                    title={getTitle()}
-                    subheader={subheader}
-                />
-                <CardContent classes={{ root: classes.cardContent }}>
-                    {children}
-                </CardContent>
-                <CardActions
-                    disableSpacing={true}
-                    classes={{ root: classes.cardActions }}
-                >
-                    <FooterButtons {...props} />
-                </CardActions>
-            </Card>
-        </CardContainer>
+        <Grid item xs={12} {...item.size} key={item.key}>
+            <AnimateWidget duration={400} animate={item.selected}>
+                <Box component='div' p={1}>
+                    <WidgetContainer>
+                        <WidgetIcon />
+                        <WidgetCard>
+                            <CardHeader
+                                action={<WidgetHeader {...props} />}
+                                classes={{ ...classes, root: classes.header }}
+                                title={getTitle()}
+                                subheader={subheader}
+                            />
+                            <WidgetContent>{children}</WidgetContent>
+                            <CardActions
+                                disableSpacing={true}
+                                classes={{ root: classes.cardActions }}
+                            >
+                                <FooterButtons {...props} />
+                            </CardActions>
+                        </WidgetCard>
+                    </WidgetContainer>
+                </Box>
+            </AnimateWidget>
+        </Grid>
     )
 }
 
 export default withStyles(styles)(Widget)
+// TODO:
+// CardHeader to WdigetHeader
+// CardActions to WdigetActions
+// FooterButtons to WidgetFooter
