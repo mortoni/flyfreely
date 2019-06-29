@@ -59,6 +59,7 @@ const FlyFreelyDialog: React.SFC<FlyFreelyDialogProps> = ({
 }) => {
     return (
         <FlyDialog
+            disableBackdropClick
             fullScreen={fullScreen}
             fullWidth={fullWidth}
             open={open}

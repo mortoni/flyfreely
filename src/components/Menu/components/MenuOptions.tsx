@@ -2,7 +2,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
-import DraftsIcon from '@material-ui/icons/Drafts'
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 
@@ -37,7 +36,7 @@ const MenuOptions: React.SFC<MenuOptionsProps> = ({
         <MenuList>
             {menu.map((item: any, index: number) => (
                 <MenuItem key={item.label}>
-                    <DraftsIcon />
+                    {React.createElement(item.icon, { key: item.key })}
                     <FormControlLabel
                         className={classes.label}
                         value={item.key}

@@ -8,9 +8,21 @@ export interface MissionsProps {
 }
 
 const Missions: React.SFC<MissionsProps> = ({ item }) => {
+    const onAdd = () => {
+        item.callDialog({
+            dOpen: true,
+            dTitle: 'New Mission',
+            dActions: null,
+            dMaxWidth: 'md',
+            dFullWidth: true,
+            dFullScreen: false,
+            dChildren: null,
+        })
+    }
+
     const headerButtons = [
         {
-            action: () => {},
+            action: onAdd,
             component: <AddIcon />,
             key: 'addIcon',
         },

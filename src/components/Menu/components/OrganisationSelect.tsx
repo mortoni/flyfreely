@@ -23,34 +23,23 @@ const styles = (theme: any) => ({
 const BootstrapInput = withStyles((theme) => ({
     input: {
         '&:focus': {
-            borderColor: '#80bdff',
+            borderColor: '#80bdff !important',
             borderRadius: 4,
             boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
         },
-        'backgroundColor': theme.palette.background.paper,
-        'border': '1px solid',
-        'borderImageSlice': 1,
+        'backgroundColor': 'white !important',
+        'border': '1px solid !important',
+        'borderImageSlice': '1 !important',
         'borderImageSource':
-            'linear-gradient(to right, #007dd5 30%, #33ccff 100%)',
+            'linear-gradient(to right, #007dd5 30%, #33ccff 100%) !important',
         'borderRadius': 4,
-        'fontFamily': [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        'fontSize': 16,
-        'padding': '5px 26px 5px 10px',
+        'padding': '5px 26px 5px 10px !important',
         'position': 'relative',
-        'transition': theme.transitions.create(['border-color', 'box-shadow']),
-        'width': '180px',
-        // Use the system font instead of the default Roboto font.
+        'transition': theme.transitions.create([
+            'border-color !important',
+            'box-shadow !important',
+        ]),
+        'width': '180px !important',
     },
     root: {
         'label + &': {

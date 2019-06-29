@@ -17,7 +17,7 @@ const WidgetHeader: React.SFC<WidgetHeaderProps> = ({ headerButtons }) => {
                 key={item.key}
                 item={item}
                 aria-label='Settings'
-                onClick={item.action()}
+                onClick={item.action}
             >
                 {item.component}
             </ButtonWithIcon>
