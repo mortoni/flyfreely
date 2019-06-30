@@ -21,7 +21,7 @@ export interface FlyFreelyDialogProps {
 }
 
 const FlyDialogTitle = styled(DialogTitle)`
-    background-color: #037dd6;
+    background-color: ${(props) => props.theme.palette.primary.main};
     max-height: 35px;
     padding-left: 85px !important;
     color: #fafafa;

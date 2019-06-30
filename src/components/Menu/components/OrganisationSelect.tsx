@@ -30,8 +30,7 @@ const BootstrapInput = withStyles((theme) => ({
         'backgroundColor': 'white !important',
         'border': '1px solid !important',
         'borderImageSlice': '1 !important',
-        'borderImageSource':
-            'linear-gradient(to right, #007dd5 30%, #33ccff 100%) !important',
+        'borderImageSource': `linear-gradient(to right, ${theme.palette.primary.main} 30%, ${theme.palette.primary.light} 100%) !important`,
         'borderRadius': 4,
         'padding': '5px 26px 5px 10px !important',
         'position': 'relative',

@@ -1,13 +1,15 @@
 import Paper from '@material-ui/core/Paper'
+import { withStyles } from '@material-ui/core/styles'
 import demo = require('assets/demo.png')
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import MenuOptions from './components/MenuOptions'
 import OrganisationSelect from './components/OrganisationSelect'
 
 export interface MenuProps {
     menu: any
     setMenu: any
+    theme: any
 }
 
 const MenuContainer = styled.div`
@@ -27,7 +29,7 @@ const Divider = styled.div`
         width: 100%;
         height: 25px;
         border-radius: 125px / 12px;
-        box-shadow: 0 0 8px #037dd6;
+        box-shadow: ${(props) => `0 0 8px ${props.theme.palette.primary.main}`};
     }
 `
 
@@ -38,10 +40,10 @@ const Logo = styled.img.attrs({
 `
 
 const LogoContainer = styled(Paper)`
-    flex-direction: column;
-    height: 180px;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column
+    height: 180px
+    align-items: center
+    justify-content: center
     display: flex;
 `
 
@@ -53,7 +55,7 @@ const Menu: React.SFC<MenuProps> = ({ ...props }) => {
                 <OrganisationSelect />
             </LogoContainer>
 
-            <Divider />
+            <Divider {...props} />
 
             <Paper>
                 <MenuOptions {...props} />
@@ -63,4 +65,6 @@ const Menu: React.SFC<MenuProps> = ({ ...props }) => {
         </MenuContainer>
     )
 }
-export default Menu
+
+export default withStyles(null, { withTheme: true })(Menu)
+// export default withTheme(Menu)

@@ -1,44 +1,25 @@
-import DateFnsUtils from '@date-io/date-fns'
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import NoSsr from '@material-ui/core/NoSsr'
+import {
+    createMuiTheme,
+    MuiThemeProvider,
+    withTheme as muiWithTheme,
+} from '@material-ui/core/styles'
 import { select, withKnobs } from '@storybook/addon-knobs/react'
 import { addDecorator, addParameters, configure } from '@storybook/react'
 import { create } from '@storybook/theming'
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
+import { ThemeProvider } from 'styled-components'
 import themes from '../src/theme'
-
-addParameters({
-    options: {
-        backgrounds: [
-            {
-                default: true,
-                name: 'grey',
-                value: '#ccc',
-            },
-            {
-                name: 'none',
-                value: '#fff',
-            },
-            {
-                name: 'black',
-                value: '#000',
-            },
-        ],
-        isFullscreen: false,
-        panelPosition: 'bottom',
-        theme: create({
-            base: 'light',
-            brandTitle: 'FlyFreely',
-        }),
-    },
-})
 
 addDecorator((story) => {
     const theme = select('Theme', Object.keys(themes), 'base', 'Theme')
 
     return (
         <MuiThemeProvider theme={createMuiTheme(themes[theme])}>
-            {story()}
+            <ThemeProvider theme={createMuiTheme(themes[theme])}>
+                {story()}
+            </ThemeProvider>
         </MuiThemeProvider>
     )
 })

@@ -26,7 +26,7 @@ const styles = (theme: any) => ({
         backgroundColor: '#fafafa',
     },
     header: {
-        backgroundColor: '#037dd6',
+        backgroundColor: theme.palette.primary.main,
         maxHeight: '35px',
         paddingLeft: '85px !important',
     },
