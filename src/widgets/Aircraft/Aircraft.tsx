@@ -4,10 +4,10 @@ import * as React from 'react'
 
 export interface AircraftProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
-const Aircraft: React.SFC<AircraftProps> = ({ item }) => {
+const Aircraft: React.SFC<AircraftProps> = ({ item, setDialog }) => {
     const headerButtons = [
         {
             action: () => {},

@@ -9,15 +9,18 @@ import * as React from 'react'
 import styled from 'styled-components'
 import DialogIcon from './components/DialogIcon'
 
-export interface FlyFreelyDialogProps {
+export interface FlyDialogProps {
     title: string
     children?: any
     actions?: any
     fullWidth?: boolean
     open: boolean
     maxWidth?: any
-    handleClose?: any
     fullScreen: boolean
+}
+
+interface OtherProps {
+    handleClose: any
 }
 
 const FlyDialogTitle = styled(DialogTitle)`
@@ -47,7 +50,7 @@ const CloseButton = styled(IconButton)`
     top: 8px;
 `
 
-const FlyFreelyDialog: React.SFC<FlyFreelyDialogProps> = ({
+const FlyDialogProps: React.SFC<FlyDialogProps & OtherProps> = ({
     title,
     children,
     actions,
@@ -91,4 +94,4 @@ const FlyFreelyDialog: React.SFC<FlyFreelyDialogProps> = ({
     )
 }
 
-export default FlyFreelyDialog
+export default FlyDialogProps

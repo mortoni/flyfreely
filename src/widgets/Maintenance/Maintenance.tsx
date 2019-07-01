@@ -4,10 +4,10 @@ import * as React from 'react'
 
 export interface MaintenanceProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
-const Maintenance: React.SFC<MaintenanceProps> = ({ item, callDialog }) => {
+const Maintenance: React.SFC<MaintenanceProps> = ({ item, setDialog }) => {
     const headerButtons = [
         {
             action: () => {},

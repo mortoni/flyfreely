@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import Dialog from 'components/Dialog'
+import Dialog, { FlyDialogProps } from 'components/Dialog'
 import Menu from 'components/Menu'
 import * as React from 'react'
 import styled from 'styled-components'
@@ -29,46 +29,21 @@ import LocationOnIcon from '@material-ui/icons/LocationOn'
 import PeopleIcon from '@material-ui/icons/People'
 import WarningIcon from '@material-ui/icons/Warning'
 
-interface DialogProps {
-    dOpen: boolean
-    dTitle: string
-    dActions: any
-    dMaxWidth: any
-    dFullWidth: boolean
-    dFullScreen: boolean
-    dChildren: any
-}
-
 const MenuGrid = styled(Grid)`
     margin-left: 240px;
 `
 
 const Dashboard: React.SFC<any> = () => {
-    const [title, setTitle] = React.useState('')
-    const [actions, setActions] = React.useState({})
-    const [fullWidth, setFullWidth] = React.useState(true)
-    const [open, setOpen] = React.useState(false)
-    const [maxWidth, setMaxWidth] = React.useState('md')
-    const [fullScreen, setFullScreen] = React.useState(false)
-    const [dialogChildren, setChildren] = React.useState(null)
-
-    const callDialog = ({
-        dOpen,
-        dTitle,
-        dActions,
-        dMaxWidth,
-        dFullWidth,
-        dFullScreen,
-        dChildren,
-    }: DialogProps) => {
-        setOpen(dOpen)
-        setTitle(dTitle)
-        setActions(dActions)
-        setMaxWidth(dMaxWidth)
-        setFullWidth(dFullWidth)
-        setFullScreen(dFullScreen)
-        setChildren(dChildren)
+    const defaultDialog: FlyDialogProps = {
+        actions: null,
+        children: null,
+        fullScreen: false,
+        fullWidth: true,
+        maxWidth: 'md',
+        open: false,
+        title: '',
     }
+    const [dialogProps, setDialog] = React.useState(defaultDialog)
 
     const [menu, setMenu] = React.useState([
         {
@@ -171,11 +146,18 @@ const Dashboard: React.SFC<any> = () => {
 
     const loadMenu = menu.map((item) =>
         React.createElement(item.component, {
-            callDialog,
             item,
             key: item.key,
+            setDialog,
         }),
     )
+
+    const onDialogClose = () => {
+        setDialog({
+            ...defaultDialog,
+            open: false,
+        })
+    }
     return (
         <Grid container>
             <Menu menu={menu} setMenu={setMenu} />
@@ -184,19 +166,7 @@ const Dashboard: React.SFC<any> = () => {
                 {loadMenu}
             </MenuGrid>
 
-            <Dialog
-                title={title}
-                actions={actions}
-                fullWidth={fullWidth}
-                open={open}
-                maxWidth={maxWidth}
-                handleClose={() => setOpen(false)}
-                fullScreen={fullScreen}
-            >
-                {dialogChildren}
-            </Dialog>
-
-            {/* <Dialog dialog={dialog} /> */}
+            <Dialog {...dialogProps} handleClose={onDialogClose} />
         </Grid>
     )
 }

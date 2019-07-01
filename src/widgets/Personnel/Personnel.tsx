@@ -4,10 +4,10 @@ import * as React from 'react'
 
 export interface PersonnelProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
-const Personnel: React.SFC<PersonnelProps> = ({ item, callDialog }) => {
+const Personnel: React.SFC<PersonnelProps> = ({ item, setDialog }) => {
     const headerButtons = [
         {
             action: () => {},

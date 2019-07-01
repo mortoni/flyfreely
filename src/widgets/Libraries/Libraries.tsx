@@ -4,10 +4,10 @@ import * as React from 'react'
 
 export interface LibrariesProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
-const Libraries: React.SFC<LibrariesProps> = ({ item, callDialog }) => {
+const Libraries: React.SFC<LibrariesProps> = ({ item, setDialog }) => {
     const headerButtons = [
         {
             action: () => {},

@@ -4,12 +4,12 @@ import * as React from 'react'
 
 export interface OrganisationLinksProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
 const OrganisationLinks: React.SFC<OrganisationLinksProps> = ({
     item,
-    callDialog,
+    setDialog,
 }) => {
     const headerButtons = [
         {

@@ -4,10 +4,10 @@ import * as React from 'react'
 
 export interface LocationsProps {
     item: any
-    callDialog: any
+    setDialog: any
 }
 
-const Locations: React.SFC<LocationsProps> = ({ item, callDialog }) => {
+const Locations: React.SFC<LocationsProps> = ({ item, setDialog }) => {
     const headerButtons = [
         {
             action: () => {},
