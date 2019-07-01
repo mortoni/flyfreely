@@ -1,9 +1,8 @@
-import FormControl from '@material-ui/core/FormControl'
-import InputBase from '@material-ui/core/InputBase'
-import InputLabel from '@material-ui/core/InputLabel'
-import NativeSelect from '@material-ui/core/NativeSelect'
+import MenuItem from '@material-ui/core/MenuItem'
+import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
+import styled from 'styled-components'
 
 export interface OrganisationSelectProps {
     classes: any
@@ -20,59 +19,44 @@ const styles = (theme: any) => ({
         width: '100%',
     },
 })
-const BootstrapInput = withStyles((theme) => ({
-    input: {
-        '&:focus': {
-            borderColor: '#80bdff !important',
-            borderRadius: 4,
-            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-        },
-        'backgroundColor': 'white !important',
-        'border': '1px solid !important',
-        'borderImageSlice': '1 !important',
-        'borderImageSource': `linear-gradient(to right, ${theme.palette.primary.main} 30%, ${theme.palette.primary.light} 100%) !important`,
-        'borderRadius': 4,
-        'padding': '5px 26px 5px 10px !important',
-        'position': 'relative',
-        'transition': theme.transitions.create([
-            'border-color !important',
-            'box-shadow !important',
-        ]),
-        'width': '180px !important',
-    },
-    root: {
-        'label + &': {
-            marginTop: theme.spacing(3),
-        },
-    },
-}))(InputBase)
+
+const FlyInput = styled(TextField)`
+    margin-left: ${(props) => props.theme.spacing(1)};
+    margin-right: ${(props) => props.theme.spacing(1)};
+    width: 200;
+`
 
 const OrganisationSelect: React.SFC<OrganisationSelectProps> = ({}) => {
-    const [age, setAge] = React.useState('')
-    const handleChange = (event: any) => {
-        setAge(event.target.value)
-    }
+    const [value, setValue] = React.useState('Org 1')
+    const organisations = [
+        {
+            label: 'Org 1',
+            value: 'org1',
+        },
+        {
+            label: 'Org 2',
+            value: 'org2',
+        },
+        {
+            label: 'Org 3',
+            value: 'org3',
+        },
+    ]
     return (
-        <FormControl>
-            <InputLabel htmlFor='age-customized-native-simple'>
-                Organisation
-            </InputLabel>
-            <NativeSelect
-                value={age}
-                onChange={handleChange}
-                input={
-                    <BootstrapInput
-                        name='age'
-                        id='age-customized-native-simple'
-                    />
-                }
-            >
-                <option value='' />
-                <option value={10}>Own ReOC Admin(Personal)</option>
-                <option value={20}>Dev Business Customer(Commercial)</option>
-                <option value={30}>Mobile App Org(Commercial)</option>
-            </NativeSelect>
-        </FormControl>
+        <FlyInput
+            id='organisation-select'
+            select
+            label='Organisation'
+            value={value}
+            onChange={() => setValue()}
+            margin='normal'
+        >
+            {organisations.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                </MenuItem>
+            ))}
+        </FlyInput>
     )
 }
 export default withStyles(styles)(OrganisationSelect)

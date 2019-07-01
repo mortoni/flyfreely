@@ -4,9 +4,13 @@ import * as React from 'react'
 
 export interface IncidentReportsProps {
     item: any
+    callDialog: any
 }
 
-const IncidentReports: React.SFC<IncidentReportsProps> = ({ item }) => {
+const IncidentReports: React.SFC<IncidentReportsProps> = ({
+    item,
+    callDialog,
+}) => {
     const headerButtons = [
         {
             action: () => {},

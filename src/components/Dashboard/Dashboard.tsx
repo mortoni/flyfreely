@@ -1,8 +1,8 @@
 import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/styles'
 import Dialog from 'components/Dialog'
 import Menu from 'components/Menu'
 import * as React from 'react'
+import styled from 'styled-components'
 import Aircraft from 'widgets/Aircraft'
 import Batteries from 'widgets/Batteries'
 import BatterySets from 'widgets/BatterySets'
@@ -29,10 +29,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn'
 import PeopleIcon from '@material-ui/icons/People'
 import WarningIcon from '@material-ui/icons/Warning'
 
-interface DashboardProps {
-    classes: any
-}
-
 interface DialogProps {
     dOpen: boolean
     dTitle: string
@@ -43,13 +39,11 @@ interface DialogProps {
     dChildren: any
 }
 
-const styles = (theme: any) => ({
-    root: {
-        marginLeft: 240,
-    },
-})
+const MenuGrid = styled(Grid)`
+    margin-left: 240px;
+`
 
-const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
+const Dashboard: React.SFC<any> = () => {
     const [title, setTitle] = React.useState('')
     const [actions, setActions] = React.useState({})
     const [fullWidth, setFullWidth] = React.useState(true)
@@ -78,7 +72,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
 
     const [menu, setMenu] = React.useState([
         {
-            callDialog,
             component: Missions,
             icon: ListIcon,
             key: 'mission',
@@ -87,7 +80,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: Aircraft,
             icon: FlightIcon,
             key: 'rpa',
@@ -96,7 +88,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: { md: 6 },
         },
         {
-            callDialog,
             component: Personnel,
             icon: PeopleIcon,
             key: 'personnel',
@@ -105,7 +96,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: { md: 6 },
         },
         {
-            callDialog,
             component: Batteries,
             icon: Battery20Icon,
             key: 'batteries',
@@ -114,7 +104,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: BatterySets,
             icon: BatteryStdIcon,
             key: 'batterySets',
@@ -123,7 +112,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: MissionApprovals,
             icon: ListAltIcon,
             key: 'approvals',
@@ -132,7 +120,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: Maintenance,
             icon: BuildIcon,
             key: 'maintenance',
@@ -141,7 +128,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: Locations,
             icon: LocationOnIcon,
             key: 'locations',
@@ -150,7 +136,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: { md: 6 },
         },
         {
-            callDialog,
             component: Libraries,
             icon: LibraryBooksIcon,
             key: 'libraries',
@@ -159,7 +144,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: { md: 6 },
         },
         {
-            callDialog,
             component: IncidentReports,
             icon: BugReportIcon,
             key: 'incident',
@@ -168,7 +152,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: RiskRegister,
             icon: WarningIcon,
             key: 'risk',
@@ -177,7 +160,6 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             size: {},
         },
         {
-            callDialog,
             component: OrganisationLinks,
             icon: LinkIcon,
             key: 'organisationLinks',
@@ -187,22 +169,20 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
         },
     ])
 
-    const loadMenu = () => {
-        return menu.map((item) =>
-            React.createElement(item.component, {
-                item,
-                key: item.key,
-            }),
-        )
-    }
-
+    const loadMenu = menu.map((item) =>
+        React.createElement(item.component, {
+            callDialog,
+            item,
+            key: item.key,
+        }),
+    )
     return (
         <Grid container>
             <Menu menu={menu} setMenu={setMenu} />
 
-            <Grid container spacing={0} className={classes.root}>
-                {loadMenu()}
-            </Grid>
+            <MenuGrid container spacing={0}>
+                {loadMenu}
+            </MenuGrid>
 
             <Dialog
                 title={title}
@@ -215,7 +195,9 @@ const Dashboard: React.SFC<DashboardProps> = ({ classes }) => {
             >
                 {dialogChildren}
             </Dialog>
+
+            {/* <Dialog dialog={dialog} /> */}
         </Grid>
     )
 }
-export default withStyles(styles)(Dashboard)
+export default Dashboard

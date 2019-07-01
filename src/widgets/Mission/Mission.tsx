@@ -5,18 +5,19 @@ import * as React from 'react'
 
 export interface MissionsProps {
     item: any
+    callDialog: any
 }
 
-const Missions: React.SFC<MissionsProps> = ({ item }) => {
+const Missions: React.SFC<MissionsProps> = ({ item, callDialog }) => {
     const onAdd = () => {
-        item.callDialog({
+        callDialog({
+            dActions: null,
+            dChildren: null,
+            dFullScreen: false,
+            dFullWidth: true,
+            dMaxWidth: 'md',
             dOpen: true,
             dTitle: 'New Mission',
-            dActions: null,
-            dMaxWidth: 'md',
-            dFullWidth: true,
-            dFullScreen: false,
-            dChildren: null,
         })
     }
 

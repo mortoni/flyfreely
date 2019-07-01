@@ -4,6 +4,7 @@ import * as React from 'react'
 
 export interface AircraftProps {
     item: any
+    callDialog: any
 }
 
 const Aircraft: React.SFC<AircraftProps> = ({ item }) => {

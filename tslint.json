@@ -14,7 +14,8 @@
     "jsx-no-multiline-js": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
-    "jsx-wrap-multiline": false
+    "jsx-wrap-multiline": false,
+    "one-variable-per-declaration": false
   },
   "rulesDirectory": []
 }

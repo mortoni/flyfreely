@@ -4,9 +4,10 @@ import * as React from 'react'
 
 export interface RiskRegisterProps {
     item: any
+    callDialog: any
 }
 
-const RiskRegister: React.SFC<RiskRegisterProps> = ({ item }) => {
+const RiskRegister: React.SFC<RiskRegisterProps> = ({ item, callDialog }) => {
     const headerButtons = [
         {
             action: () => {},

@@ -4,9 +4,13 @@ import * as React from 'react'
 
 export interface MissionApprovalsProps {
     item: any
+    callDialog: any
 }
 
-const MissionApprovals: React.SFC<MissionApprovalsProps> = ({ item }) => {
+const MissionApprovals: React.SFC<MissionApprovalsProps> = ({
+    item,
+    callDialog,
+}) => {
     const headerButtons = [
         {
             action: () => {},

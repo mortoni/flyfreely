@@ -1,5 +1,4 @@
 import Paper from '@material-ui/core/Paper'
-import { withStyles } from '@material-ui/core/styles'
 import demo = require('assets/demo.png')
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
@@ -33,9 +32,7 @@ const Divider = styled.div`
     }
 `
 
-const Logo = styled.img.attrs({
-    src: String(demo),
-})`
+const Logo = styled.img`
     width: 100px;
 `
 
@@ -51,11 +48,11 @@ const Menu: React.SFC<MenuProps> = ({ ...props }) => {
     return (
         <MenuContainer>
             <LogoContainer>
-                <Logo />
-                <OrganisationSelect />
+                <Logo src={String(demo)} />
+                {/* <OrganisationSelect /> */}
             </LogoContainer>
 
-            <Divider {...props} />
+            <Divider />
 
             <Paper>
                 <MenuOptions {...props} />
@@ -66,5 +63,4 @@ const Menu: React.SFC<MenuProps> = ({ ...props }) => {
     )
 }
 
-export default withStyles(null, { withTheme: true })(Menu)
-// export default withTheme(Menu)
+export default withTheme(Menu)

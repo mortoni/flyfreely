@@ -4,9 +4,13 @@ import * as React from 'react'
 
 export interface OrganisationLinksProps {
     item: any
+    callDialog: any
 }
 
-const OrganisationLinks: React.SFC<OrganisationLinksProps> = ({ item }) => {
+const OrganisationLinks: React.SFC<OrganisationLinksProps> = ({
+    item,
+    callDialog,
+}) => {
     const headerButtons = [
         {
             action: () => {},

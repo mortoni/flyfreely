@@ -4,9 +4,10 @@ import * as React from 'react'
 
 export interface BatteriesProps {
     item: any
+    callDialog: any
 }
 
-const Batteries: React.SFC<BatteriesProps> = ({ item }) => {
+const Batteries: React.SFC<BatteriesProps> = ({ item, callDialog }) => {
     const headerButtons = [
         {
             action: () => {},
