@@ -152,12 +152,6 @@ const Dashboard: React.SFC<any> = () => {
         }),
     )
 
-    const onDialogClose = () => {
-        setDialog({
-            ...defaultDialog,
-            open: false,
-        })
-    }
     return (
         <Grid container>
             <Menu menu={menu} setMenu={setMenu} />
@@ -166,7 +160,15 @@ const Dashboard: React.SFC<any> = () => {
                 {loadMenu}
             </MenuGrid>
 
-            <Dialog {...dialogProps} handleClose={onDialogClose} />
+            <Dialog
+                {...dialogProps}
+                handleClose={() =>
+                    setDialog({
+                        ...defaultDialog,
+                        open: false,
+                    })
+                }
+            />
         </Grid>
     )
 }

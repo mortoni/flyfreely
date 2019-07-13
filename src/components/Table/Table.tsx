@@ -14,8 +14,7 @@ import Remove from '@material-ui/icons/Remove'
 import SaveAlt from '@material-ui/icons/SaveAlt'
 import Search from '@material-ui/icons/Search'
 import ViewColumn from '@material-ui/icons/ViewColumn'
-import { withStyles } from '@material-ui/styles'
-import MaterialTable, { MTableHeader } from 'material-table'
+import MaterialTable from 'material-table'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -80,21 +79,11 @@ export interface TableProps {
     classes: any
 }
 
-// const TableContainer = styled(Paper).attrs({
-//     elevation: 0,
-//     props: props,
-// })`
-//     width: 100px;
-// `
-
-const styles = (theme: any) => ({
-    header: {
-        backgroundColor: '#fafafa',
-    },
-    paper: {
-        backgroundColor: '#fafafa',
-    },
-})
+const FlyPaper = styled(Paper)`
+    && {
+        background-color: #fafafa;
+    }
+`
 
 const Table: React.SFC<TableProps> = ({ columns, data, options, classes }) => {
     return (
@@ -102,9 +91,7 @@ const Table: React.SFC<TableProps> = ({ columns, data, options, classes }) => {
             options={options}
             columns={columns}
             components={{
-                Container: (props) => (
-                    <Paper {...props} className={classes.paper} elevation={0} />
-                ),
+                Container: (props) => <FlyPaper {...props} elevation={0} />,
             }}
             data={data}
             icons={tableIcons}
@@ -113,4 +100,4 @@ const Table: React.SFC<TableProps> = ({ columns, data, options, classes }) => {
     )
 }
 
-export default withStyles(styles)(Table)
+export default Table

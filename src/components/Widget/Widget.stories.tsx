@@ -88,31 +88,3 @@ storiesOf('Components/Widget', module)
             </Widget>
         )
     })
-    .add('with selector', () => {
-        const title = text('Title', 'Mission')
-        const subheader = text('Subheader', 'this is a mission subheader test')
-
-        const headerButtons = [
-            {
-                action: () => action('onAddButton'),
-                component: <AddIcon />,
-                key: 'addIcon',
-            },
-        ]
-
-        return (
-            <Widget
-                item={item}
-                title={title}
-                titleWithSelect={true}
-                subheader={subheader}
-                headerButtons={headerButtons}
-            >
-                <Typography variant='body2' color='textSecondary' component='p'>
-                    This impressive paella is a perfect party dish and a fun
-                    meal to cook together with your guests. Add 1 cup of frozen
-                    peas along with the mussels, if you like.
-                </Typography>
-            </Widget>
-        )
-    })

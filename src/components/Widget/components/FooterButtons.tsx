@@ -1,18 +1,11 @@
 import { IconButton } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 
 interface FooterButtonsProps {
-    footerButtons?: any[]
-    classes: any
+    footerButtons: any
 }
 
-const styles = {}
-
-const FooterButtons: React.SFC<FooterButtonsProps> = ({
-    classes,
-    footerButtons,
-}) => {
+const FooterButtons: React.SFC<FooterButtonsProps> = ({ footerButtons }) => {
     if (footerButtons) {
         return footerButtons.map((item: any) => (
             <IconButton onClick={item.action()}>{item.component}</IconButton>
@@ -21,4 +14,4 @@ const FooterButtons: React.SFC<FooterButtonsProps> = ({
     return null
 }
 
-export default withStyles(styles)(FooterButtons)
+export default FooterButtons

@@ -10,28 +10,23 @@ export interface MenuOptionsProps {
     setMenu: any
 }
 
-const FlyCheckbox = styled(Checkbox).attrs(({ checked, onChange }) => ({
-    checked,
-    color: 'primary',
-    onChange,
-}))`
+const FlyCheckbox = styled(Checkbox)`
     && {
         position: absolute;
         right: 0;
     }
 `
-
-const FlyLabel = styled(FormControlLabel).attrs(
-    ({ value, control, label, labelPlacement }) => ({
-        control,
-        label,
-        labelPlacement,
-        value,
-    }),
-)`
+const FlyLabel = styled(FormControlLabel)`
     && {
         justify-content: flex-end;
         width: 100%;
+    }
+`
+
+const FlyItem = styled(MenuItem)`
+    && {
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 `
 
@@ -44,12 +39,13 @@ const MenuOptions: React.SFC<MenuOptionsProps> = ({ menu, setMenu }) => {
     return (
         <MenuList>
             {menu.map((item: any, index: number) => (
-                <MenuItem key={item.label}>
+                <FlyItem key={item.label}>
                     {React.createElement(item.icon, { key: item.key })}
                     <FlyLabel
                         value={item.key}
                         control={
                             <FlyCheckbox
+                                color='primary'
                                 checked={item.selected}
                                 onChange={() => menuChange(item, index)}
                             />
@@ -57,7 +53,7 @@ const MenuOptions: React.SFC<MenuOptionsProps> = ({ menu, setMenu }) => {
                         label={item.label}
                         labelPlacement='start'
                     />
-                </MenuItem>
+                </FlyItem>
             ))}
         </MenuList>
     )

@@ -1,9 +1,8 @@
 import { Card, CardActions, CardContent, CardHeader } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import {
     AnimateWidget,
     FooterButtons,
@@ -19,27 +18,8 @@ export interface WidgetProps {
     classes: any
     titleWithSelect: boolean
     item: any
+    theme: any
 }
-
-const styles = (theme: any) => ({
-    cardActions: {
-        backgroundColor: '#fafafa',
-    },
-    header: {
-        backgroundColor: theme.palette.primary.main,
-        maxHeight: '35px',
-        paddingLeft: '85px !important',
-    },
-    subheader: {
-        color: '#fafafa',
-    },
-    title: {
-        color: '#fafafa',
-    },
-    widgetContaier: {
-        position: 'relative',
-    },
-})
 
 const WidgetContainer = styled.div`
     position: relative;
@@ -49,16 +29,21 @@ const WidgetContent = styled(CardContent)`
     background-color: #fafafa;
 `
 
-const WidgetCard = styled(Card).attrs({
-    raised: true,
-})`
+const WidgetCard = styled(Card)`
     margin-top: 25px;
 `
 
-const WidgetActions = styled(CardActions).attrs({
-    disableSpacing: true,
-})`
-    margin-top: 25px;
+const FlyCardActions = styled(CardActions)`
+    background-color: #fafafa;
+`
+
+const FlyCardHeader = styled(CardHeader)`
+    && {
+        background-color: ${(props) => props.theme.palette.primary.main};
+        max-height: 35px;
+        padding-left: 85px;
+        color: #fafafa;
+    }
 `
 
 const Widget: React.SFC<WidgetProps> = ({
@@ -83,20 +68,16 @@ const Widget: React.SFC<WidgetProps> = ({
                 <Box component='div' p={1}>
                     <WidgetContainer>
                         <WidgetIcon />
-                        <WidgetCard>
-                            <CardHeader
+                        <WidgetCard raised={true}>
+                            <FlyCardHeader
                                 action={<WidgetHeader {...props} />}
-                                classes={{ ...classes, root: classes.header }}
                                 title={getTitle()}
                                 subheader={subheader}
                             />
                             <WidgetContent>{children}</WidgetContent>
-                            <CardActions
-                                disableSpacing={true}
-                                classes={{ root: classes.cardActions }}
-                            >
+                            <FlyCardActions disableSpacing={true}>
                                 <FooterButtons {...props} />
-                            </CardActions>
+                            </FlyCardActions>
                         </WidgetCard>
                     </WidgetContainer>
                 </Box>
@@ -105,8 +86,4 @@ const Widget: React.SFC<WidgetProps> = ({
     )
 }
 
-export default withStyles(styles)(Widget)
-// TODO:
-// CardHeader to WdigetHeader
-// CardActions to WdigetActions
-// FooterButtons to WidgetFooter
+export default withTheme(Widget)

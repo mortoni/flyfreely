@@ -40,8 +40,6 @@ const FlyDialogActions = styled(DialogActions)`
     background-color: #fafafa;
 `
 
-const Title = styled.div``
-
 const FlyDialog = styled(Dialog)``
 
 const CloseButton = styled(IconButton)`

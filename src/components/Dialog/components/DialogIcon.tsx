@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-interface DialogIconProps {}
 const DialogIconStyle = styled.div`
     border-bottom: 80px solid #fafafa;
     border-right: 30px solid transparent;
@@ -12,6 +11,6 @@ const DialogIconStyle = styled.div`
     left: 0;
 `
 
-const DialogIcon: React.SFC<DialogIconProps> = () => <DialogIconStyle />
+const DialogIcon: React.SFC<any> = () => <DialogIconStyle />
 
 export default DialogIcon

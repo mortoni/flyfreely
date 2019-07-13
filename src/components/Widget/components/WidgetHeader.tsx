@@ -7,7 +7,9 @@ interface WidgetHeaderProps {
 }
 
 const ButtonWithIcon = styled(IconButton)<any>`
-    color: #fafafa !important;
+    && {
+        color: #fafafa;
+    }
 `
 
 const WidgetHeader: React.SFC<WidgetHeaderProps> = ({ headerButtons }) => {
