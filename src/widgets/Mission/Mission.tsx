@@ -1,6 +1,10 @@
 import AddIcon from '@material-ui/icons/AddCircleOutline'
+import FileCopy from '@material-ui/icons/FileCopy'
+import Fecth from 'components/Fetch'
+import Spinner from 'components/Spinner'
 import Table from 'components/Table'
 import Widget from 'components/Widget'
+import { format } from 'date-fns'
 import * as React from 'react'
 
 export interface MissionsProps {
@@ -9,6 +13,8 @@ export interface MissionsProps {
 }
 
 const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
+    const [hidden, onHide] = React.useState(false)
+
     const onAdd = () => {
         setDialog({
             actions: null,
@@ -29,18 +35,46 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
         },
     ]
 
-    const columns = [
-        { title: 'Name', field: 'name' },
-        { title: 'Date/Time', field: 'timestamp' },
-        { title: 'Location', field: 'location' },
-        { title: 'Status', field: 'status' },
-        { title: 'Operation Type', field: 'operationType' },
-        { title: 'Crew', field: 'crew' },
-        { title: 'RPA', field: 'rpa' },
-        { title: 'Workflow', field: 'workflow' },
+    const handleCloneMission = (event: any, rowData: any) => {
+        const test = event
+        const test2 = rowData
+        debugger
+    }
+
+    const actions = [
+        {
+            icon: () => <FileCopy color='primary' />,
+            onClick: handleCloneMission,
+            tooltip: 'Clone Missions',
+        },
     ]
-    const data = []
+
+    const columns = [
+        { title: 'Name', field: 'name', hidden },
+        {
+            field: 'missionDate',
+            render: (rowData: any) =>
+                format(new Date(rowData.missionDate), 'Do MMM YYYY HH:MM'),
+            title: 'Date/Time',
+        },
+        { title: 'Location', field: 'locationName' },
+        { title: 'Status', field: 'status' },
+        { title: 'Operation Type', field: 'missionType.name' },
+        {
+            field: 'missionCrewDetails[0]',
+            render: (rowData: any) =>
+                rowData.missionCrewDetails &&
+                rowData.missionCrewDetails[0] &&
+                `${rowData.missionCrewDetails[0].person.firstName} ${rowData.missionCrewDetails[0].person.lastName}`,
+
+            title: 'Crew',
+        },
+        { title: 'RPA', field: 'craftNicknames' },
+        { title: 'Workflow', field: 'missionWorkflowVersion.workflowName' },
+    ]
+
     const options = {
+        actionsColumnIndex: -1,
         filtering: true,
         headerStyle: { backgroundColor: '#fafafa' },
         padding: 'dense',
@@ -48,9 +82,25 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
         pageSizeOptions: [],
     }
     return (
-        <Widget title={'Missions'} headerButtons={headerButtons} item={item}>
-            <Table columns={columns} data={data} options={options} />
-        </Widget>
+        <Fecth url='missions'>
+            {({ data, err, loading }: any) => (
+                <Widget
+                    title={'Missions'}
+                    headerButtons={headerButtons}
+                    item={item}
+                >
+                    <Spinner condition={loading}>
+                        <Table
+                            columns={columns}
+                            data={data}
+                            options={options}
+                            actions={actions}
+                        />
+                    </Spinner>
+                </Widget>
+            )}
+        </Fecth>
     )
 }
+
 export default Missions

@@ -9,6 +9,7 @@ module.exports = {
             forms: path.resolve('src', 'forms'),
             widgets: path.resolve('src', 'widgets'),
             assets: path.resolve('src', 'assets'),
+            database: path.resolve('src', 'database'),
         },
     },
     module: {

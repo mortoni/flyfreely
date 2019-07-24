@@ -75,8 +75,9 @@ const tableIcons = {
 export interface TableProps {
     columns: any
     data: any
+    actions?: any
     options?: any
-    classes: any
+    classes?: any
 }
 
 const FlyPaper = styled(Paper)`
@@ -85,11 +86,18 @@ const FlyPaper = styled(Paper)`
     }
 `
 
-const Table: React.SFC<TableProps> = ({ columns, data, options, classes }) => {
+const Table: React.SFC<TableProps> = ({
+    columns,
+    data,
+    options,
+    actions,
+    classes,
+}) => {
     return (
         <MaterialTable
             options={options}
             columns={columns}
+            actions={actions}
             components={{
                 Container: (props) => <FlyPaper {...props} elevation={0} />,
             }}

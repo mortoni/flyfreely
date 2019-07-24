@@ -19,21 +19,6 @@ const MenuContainer = styled.div`
     width: 230px;
 `
 
-// const Divider = styled.div`
-//     margin: 10px 0px;
-//     overflow: hidden;
-//     height: 5px;
-//     &:after {
-//         content: '';
-//         display: block;
-//         margin: -25px auto 0;
-//         width: 100%;
-//         height: 25px;
-//         border-radius: 125px / 12px;
-//         box-shadow: ${(props) => `0 0 8px ${props.theme.palette.primary.main}`};
-//     }
-// `
-
 const Logo = styled(Avatar)`
     && {
         width: 75px;

@@ -7,8 +7,12 @@ import { action } from '@storybook/addon-actions'
 import { text } from '@storybook/addon-knobs'
 import { withKnobs } from '@storybook/addon-knobs/react'
 import { storiesOf } from '@storybook/react'
+import { format } from 'date-fns'
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
+import Fecth from '../Fetch'
+import Spinner from '../Spinner'
+import Table from '../Table'
 import Widget from './Widget'
 
 const item = {
@@ -86,5 +90,67 @@ storiesOf('Components/Widget', module)
                     peas along with the mussels, if you like.
                 </Typography>
             </Widget>
+        )
+    })
+    .add('with table simulator', () => {
+        const headerButtons = [
+            {
+                action: () => action('onAddAction'),
+                component: <AddIcon />,
+                key: 'addIcon',
+            },
+        ]
+
+        const columns = [
+            { title: 'Name', field: 'name' },
+            {
+                field: 'missionDate',
+                render: (rowData: any) =>
+                    format(new Date(rowData.missionDate), 'Do MMM YYYY HH:MM'),
+                title: 'Date/Time',
+            },
+            { title: 'Location', field: 'locationName' },
+            { title: 'Status', field: 'status' },
+            { title: 'Operation Type', field: 'missionType.name' },
+            {
+                field: 'missionCrewDetails[0]',
+                render: (rowData: any) =>
+                    rowData.missionCrewDetails &&
+                    rowData.missionCrewDetails[0] &&
+                    `${rowData.missionCrewDetails[0].person.firstName}
+                    ${rowData.missionCrewDetails[0].person.lastName}`,
+
+                title: 'Crew',
+            },
+            { title: 'RPA', field: 'craftNicknames' },
+            { title: 'Workflow', field: 'missionWorkflowVersion.workflowName' },
+        ]
+
+        const options = {
+            filtering: true,
+            headerStyle: { backgroundColor: '#fafafa' },
+            padding: 'dense',
+            pageSize: 5,
+            pageSizeOptions: [],
+        }
+
+        return (
+            <Fecth url='missions'>
+                {({ data, err, loading }: any) => (
+                    <Widget
+                        title={'Missions'}
+                        headerButtons={headerButtons}
+                        item={item}
+                    >
+                        <Spinner condition={loading}>
+                            <Table
+                                columns={columns}
+                                data={data}
+                                options={options}
+                            />
+                        </Spinner>
+                    </Widget>
+                )}
+            </Fecth>
         )
     })

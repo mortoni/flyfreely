@@ -12,13 +12,14 @@ import {
 } from './components'
 
 export interface WidgetProps {
+    headerButtons?: any
     children?: any
     title: string
     subheader?: string
-    classes: any
-    titleWithSelect: boolean
+    classes?: any
+    titleWithSelect?: boolean
     item: any
-    theme: any
+    theme?: any
 }
 
 const WidgetContainer = styled.div`
