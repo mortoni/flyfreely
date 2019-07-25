@@ -77,6 +77,7 @@ export interface TableProps {
     data: any
     actions?: any
     options?: any
+    localization: any
     classes?: any
 }
 
@@ -91,6 +92,7 @@ const Table: React.SFC<TableProps> = ({
     data,
     options,
     actions,
+    localization,
     classes,
 }) => {
     return (
@@ -98,6 +100,7 @@ const Table: React.SFC<TableProps> = ({
             options={options}
             columns={columns}
             actions={actions}
+            localization={localization}
             components={{
                 Container: (props) => <FlyPaper {...props} elevation={0} />,
             }}

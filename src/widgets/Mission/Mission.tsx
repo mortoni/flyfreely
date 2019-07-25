@@ -5,6 +5,7 @@ import Spinner from 'components/Spinner'
 import Table from 'components/Table'
 import Widget from 'components/Widget'
 import { format } from 'date-fns'
+import MissionForm from 'forms/MissionForm'
 import * as React from 'react'
 
 export interface MissionsProps {
@@ -13,12 +14,10 @@ export interface MissionsProps {
 }
 
 const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
-    const [hidden, onHide] = React.useState(false)
-
     const onAdd = () => {
         setDialog({
             actions: null,
-            children: null,
+            children: React.createElement(MissionForm, null),
             fullScreen: false,
             fullWidth: true,
             maxWidth: 'md',
@@ -35,11 +34,7 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
         },
     ]
 
-    const handleCloneMission = (event: any, rowData: any) => {
-        const test = event
-        const test2 = rowData
-        debugger
-    }
+    const handleCloneMission = (event: any, rowData: any) => {}
 
     const actions = [
         {
@@ -50,7 +45,7 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
     ]
 
     const columns = [
-        { title: 'Name', field: 'name', hidden },
+        { title: 'Name', field: 'name', removable: false },
         {
             field: 'missionDate',
             render: (rowData: any) =>
@@ -62,16 +57,22 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
         { title: 'Operation Type', field: 'missionType.name' },
         {
             field: 'missionCrewDetails[0]',
+            removable: false,
             render: (rowData: any) =>
                 rowData.missionCrewDetails &&
                 rowData.missionCrewDetails[0] &&
                 `${rowData.missionCrewDetails[0].person.firstName} ${rowData.missionCrewDetails[0].person.lastName}`,
-
             title: 'Crew',
         },
         { title: 'RPA', field: 'craftNicknames' },
         { title: 'Workflow', field: 'missionWorkflowVersion.workflowName' },
     ]
+
+    const localization = {
+        toolbar: {
+            addRemoveColumns: 'test',
+        },
+    }
 
     const options = {
         actionsColumnIndex: -1,
@@ -95,6 +96,7 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
                             data={data}
                             options={options}
                             actions={actions}
+                            localization={localization}
                         />
                     </Spinner>
                 </Widget>

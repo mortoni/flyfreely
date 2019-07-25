@@ -1,4 +1,11 @@
 export default {
+    overrides: {
+        MuiStepper: {
+            root: {
+                backgroundColor: 'transparent',
+            },
+        },
+    },
     palette: {
         grey: {
             100: '#FAFAFA',
@@ -7,7 +14,7 @@ export default {
             900: '#181822',
         },
         primary: {
-            contrastText: '#fff',
+            contrastText: '#FFF',
             dark: '#0052a4',
             light: '#5facff',
             main: '#037dd6',

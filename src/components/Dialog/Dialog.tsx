@@ -11,7 +11,7 @@ import DialogIcon from './components/DialogIcon'
 
 export interface FlyDialogProps {
     title: string
-    children?: any
+    children: any
     actions?: any
     fullWidth?: boolean
     open: boolean
