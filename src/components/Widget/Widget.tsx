@@ -41,7 +41,7 @@ const FlyCardActions = styled(CardActions)`
 const FlyCardHeader = styled(CardHeader)`
     && {
         background-color: ${(props) => props.theme.palette.primary.main};
-        max-height: 35px;
+        max-height: 65px;
         padding-left: 85px;
         color: #fafafa;
     }

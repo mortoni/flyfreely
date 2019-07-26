@@ -15,7 +15,8 @@
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "jsx-wrap-multiline": false,
-    "one-variable-per-declaration": false
+    "one-variable-per-declaration": false,
+    "no-empty": false
   },
   "rulesDirectory": []
 }

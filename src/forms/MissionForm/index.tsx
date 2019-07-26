@@ -38,32 +38,30 @@ const MissionForm: React.SFC<MissionFormProps> = ({
     emergencyContacts,
     radioFrequencies,
     ...props
-}) => {
-    return (
-        <Formik
-            initialValues={{
-                crew,
-                crewNotes,
-                dayTime,
-                emergencyContacts,
-                location,
-                maximunHeight,
-                name,
-                objective,
-                operationType,
-                plannedDate,
-                plannedTime,
-                radioFrequencies,
-                rpa,
-                visualLineSight,
-                workflow,
-            }}
-            enableReinitialize
-            initialStatus={{ success: false, error: false }}
-            onSubmit={() => {}}
-            render={(formikProps) => <Form {...formikProps} {...props} />}
-        />
-    )
-}
+}) => (
+    <Formik
+        initialValues={{
+            crew,
+            crewNotes,
+            dayTime,
+            emergencyContacts,
+            location,
+            maximunHeight,
+            name,
+            objective,
+            operationType,
+            plannedDate,
+            plannedTime,
+            radioFrequencies,
+            rpa,
+            visualLineSight,
+            workflow,
+        }}
+        enableReinitialize
+        initialStatus={{ success: false, error: false }}
+        onSubmit={() => {}}
+        render={(formikProps) => <Form {...formikProps} {...props} />}
+    />
+)
 
 export default MissionForm

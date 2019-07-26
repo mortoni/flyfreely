@@ -7,7 +7,7 @@ const DialogIconStyle = styled.div`
     border-top-left-radius: 5px;
     position: absolute;
     top: -13px;
-    width: 55px;
+    width: 85px;
     left: 0;
 `
 

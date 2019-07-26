@@ -25,7 +25,7 @@ interface OtherProps {
 
 const FlyDialogTitle = styled(DialogTitle)`
     background-color: ${(props) => props.theme.palette.primary.main};
-    max-height: 35px;
+    max-height: 65px;
     padding-left: 85px !important;
     color: #fafafa;
     overflow: hidden;

@@ -12,7 +12,7 @@ const styles = {
         borderTopLeftRadius: '5px',
         position: 'absolute',
         top: '-12px',
-        width: '55px',
+        width: '85px',
     },
 }
 

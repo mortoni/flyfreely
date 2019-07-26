@@ -3,6 +3,7 @@ import Step from '@material-ui/core/Step'
 import StepLabel from '@material-ui/core/StepLabel'
 import Stepper from '@material-ui/core/Stepper'
 import * as React from 'react'
+import MissionCreated from './components/MissionCreated'
 import MissionObjective from './components/MissionObjectives'
 import MissionPlanning from './components/MissionPlanning'
 import MissionResources from './components/MissionResources'
@@ -48,17 +49,22 @@ const Form: React.SFC<FormProps> = ({
     const steps = [
         {
             component: MissionObjective,
-            label: 'Mission Objectives',
+            label: 'Objectives',
+            onComplete: handleNextStep,
+        },
+        {
+            component: MissionResources,
+            label: 'Resources',
             onComplete: handleNextStep,
         },
         {
             component: MissionPlanning,
-            label: 'Mission Resources',
+            label: 'Planning',
             onComplete: handleFinalStep,
         },
         {
-            component: MissionResources,
-            label: 'Mission Planning',
+            component: MissionCreated,
+            label: 'Done',
             onComplete: null,
         },
     ]

@@ -60,10 +60,9 @@ const MissionPlanning: React.SFC<MissionPlanningProps> = ({
                                 <Button
                                     color='primary'
                                     onClick={handleSubmit}
-                                    type='submit'
                                     variant='contained'
                                 >
-                                    Next
+                                    Create Mission
                                 </Button>
                             </Grid>
                         </Grid>

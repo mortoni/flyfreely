@@ -106,7 +106,7 @@ storiesOf('Components/Widget', module)
             {
                 field: 'missionDate',
                 render: (rowData: any) =>
-                    format(new Date(rowData.missionDate), 'Do MMM YYYY HH:MM'),
+                    format(new Date(rowData.missionDate), 'Do MMM yyyy HH:MM'),
                 title: 'Date/Time',
             },
             { title: 'Location', field: 'locationName' },

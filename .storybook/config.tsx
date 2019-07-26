@@ -1,12 +1,13 @@
-import NoSsr from '@material-ui/core/NoSsr'
+import DateFnsUtils from '@date-io/date-fns'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import {
     createMuiTheme,
     MuiThemeProvider,
     withTheme as muiWithTheme,
 } from '@material-ui/core/styles'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { select, withKnobs } from '@storybook/addon-knobs/react'
 import { addDecorator, addParameters, configure } from '@storybook/react'
-import { create } from '@storybook/theming'
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import { ThemeProvider } from 'styled-components'
@@ -17,8 +18,11 @@ addDecorator((story) => {
 
     return (
         <MuiThemeProvider theme={createMuiTheme(themes[theme])}>
+            <CssBaseline />
             <ThemeProvider theme={createMuiTheme(themes[theme])}>
-                {story()}
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    {story()}
+                </MuiPickersUtilsProvider>
             </ThemeProvider>
         </MuiThemeProvider>
     )
