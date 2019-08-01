@@ -12,10 +12,10 @@ const colorPalette = {
         main: '#037dd6',
     },
     secondary: {
-        contrastText: '#FFFFFF',
-        dark: '#A18245',
-        light: '#BEA470',
-        main: '#B6995E',
+        contrastText: '#000000',
+        dark: '#FFF',
+        light: '#FFF',
+        main: '#FFF',
     },
     text: {
         primary: '#464646',
@@ -50,10 +50,10 @@ export default {
             main: '#037dd6',
         },
         secondary: {
-            contrastText: '#FFFFFF',
-            dark: '#A18245',
-            light: '#BEA470',
-            main: '#B6995E',
+            contrastText: '#000000',
+            dark: '#FFF',
+            light: '#FFF',
+            main: '#FFF',
         },
         text: {
             primary: '#464646',
@@ -61,9 +61,6 @@ export default {
         },
     },
     props: {},
-    shape: {
-        borderRadius: 0,
-    },
     typography: {
         fontFamily: [
             '-apple-system',

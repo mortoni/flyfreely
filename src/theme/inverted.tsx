@@ -57,9 +57,6 @@ export default {
             secondary: '#464646',
         },
     },
-    shape: {
-        borderRadius: 2,
-    },
     typography: {
         fontFamily: [
             '-apple-system',

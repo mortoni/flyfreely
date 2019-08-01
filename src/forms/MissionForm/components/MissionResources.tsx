@@ -56,7 +56,7 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
     operationTypeList,
     workflowList,
     rpaList,
-    ...props,
+    ...props
 }) => {
     return (
         <Formik
@@ -77,7 +77,7 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                             <Grid item xs={12}>
                                 <Grid container spacing={2}>
                                     {/* Operation Type */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         <Field
                                             name='operationType'
                                             label='Operation Type'
@@ -98,7 +98,7 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                                         {/* <FieldError name='operationType' /> */}
                                     </Grid>
                                     {/* Workflow */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         <Field
                                             name='workflow'
                                             label='Workflow'
@@ -119,7 +119,7 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                                         {/* <FieldError name='workflow' /> */}
                                     </Grid>
                                     {/* RPA */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         <Field
                                             name='rpa'
                                             label='RPA'
@@ -138,7 +138,7 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                                         {/* <FieldError name='rpa' /> */}
                                     </Grid>
                                     {/* Crew */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         Crew
                                     </Grid>
 

@@ -1,4 +1,18 @@
+import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
+import Battery20Icon from '@material-ui/icons/Battery20'
+import BatteryStdIcon from '@material-ui/icons/BatteryStd'
+import BugReportIcon from '@material-ui/icons/BugReport'
+import BuildIcon from '@material-ui/icons/Build'
+import FlightIcon from '@material-ui/icons/Flight'
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks'
+import LinkIcon from '@material-ui/icons/Link'
+import ListIcon from '@material-ui/icons/List'
+import ListAltIcon from '@material-ui/icons/ListAlt'
+import LocationOnIcon from '@material-ui/icons/LocationOn'
+import PeopleIcon from '@material-ui/icons/People'
+import WarningIcon from '@material-ui/icons/Warning'
 import Dialog, { FlyDialogProps } from 'components/Dialog'
 import Menu from 'components/Menu'
 import * as React from 'react'
@@ -16,24 +30,22 @@ import OrganisationLinks from 'widgets/OrganisationLinks'
 import Personnel from 'widgets/Personnel'
 import RiskRegister from 'widgets/RiskRegister'
 
-import Battery20Icon from '@material-ui/icons/Battery20'
-import BatteryStdIcon from '@material-ui/icons/BatteryStd'
-import BugReportIcon from '@material-ui/icons/BugReport'
-import BuildIcon from '@material-ui/icons/Build'
-import FlightIcon from '@material-ui/icons/Flight'
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks'
-import LinkIcon from '@material-ui/icons/Link'
-import ListIcon from '@material-ui/icons/List'
-import ListAltIcon from '@material-ui/icons/ListAlt'
-import LocationOnIcon from '@material-ui/icons/LocationOn'
-import PeopleIcon from '@material-ui/icons/People'
-import WarningIcon from '@material-ui/icons/Warning'
+interface DashboardProps {
+    width: any
+}
 
-const MenuGrid = styled(Grid)`
-    margin-left: 240px;
+const FlyBox = styled(Box)`
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
 `
 
-const Dashboard: React.SFC<any> = () => {
+const Container = styled(Grid)`
+    overflow-x: hidden;
+    overflow-y: hidden;
+`
+
+const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
     const defaultDialog: FlyDialogProps = {
         actions: null,
         children: null,
@@ -144,7 +156,7 @@ const Dashboard: React.SFC<any> = () => {
         },
     ])
 
-    const loadMenu = menu.map((item) =>
+    const loadWidgets = menu.map((item) =>
         React.createElement(item.component, {
             item,
             key: item.key,
@@ -152,13 +164,17 @@ const Dashboard: React.SFC<any> = () => {
         }),
     )
 
-    return (
-        <Grid container>
-            <Menu menu={menu} setMenu={setMenu} />
+    const isMediumUp = isWidthUp('sm', width)
 
-            <MenuGrid container spacing={0}>
-                {loadMenu}
-            </MenuGrid>
+    return (
+        <Container container>
+            <Menu menu={menu} setMenu={setMenu} setDialog={setDialog} />
+
+            <FlyBox ml={isMediumUp ? 30 : 0} pt={isMediumUp ? 0 : 5}>
+                <Grid container spacing={0}>
+                    {loadWidgets}
+                </Grid>
+            </FlyBox>
 
             <Dialog
                 {...dialogProps}
@@ -169,7 +185,7 @@ const Dashboard: React.SFC<any> = () => {
                     })
                 }
             />
-        </Grid>
+        </Container>
     )
 }
-export default Dashboard
+export default withWidth()(Dashboard)

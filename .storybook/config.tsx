@@ -6,23 +6,30 @@ import {
     withTheme as muiWithTheme,
 } from '@material-ui/core/styles'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import { select, withKnobs } from '@storybook/addon-knobs/react'
 import { addDecorator, addParameters, configure } from '@storybook/react'
+
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as StyledProvider } from 'styled-components'
 import themes from '../src/theme'
 
 addDecorator((story) => {
-    const theme = select('Theme', Object.keys(themes), 'base', 'Theme')
+    const theme = select('Theme', Object.keys(themes), 'flyfreely', 'Theme')
 
+    // using MuiThemeProvider from v3
+    // ThemeProvider from v4
+    // Styled component Provider
     return (
         <MuiThemeProvider theme={createMuiTheme(themes[theme])}>
-            <CssBaseline />
             <ThemeProvider theme={createMuiTheme(themes[theme])}>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    {story()}
-                </MuiPickersUtilsProvider>
+                <CssBaseline />
+                <StyledProvider theme={createMuiTheme(themes[theme])}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        {story()}
+                    </MuiPickersUtilsProvider>
+                </StyledProvider>
             </ThemeProvider>
         </MuiThemeProvider>
     )

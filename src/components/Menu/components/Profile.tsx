@@ -1,11 +1,16 @@
 import Chip from '@material-ui/core/Chip'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import FaceIcon from '@material-ui/icons/Face'
+import FingerPrintIcon from '@material-ui/icons/Fingerprint'
 import ArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
+import PersonIcon from '@material-ui/icons/Person'
+import WidgetsIcon from '@material-ui/icons/Widgets'
 import Divider from 'components/Divider'
 import * as React from 'react'
 import styled from 'styled-components'
+import MenuSelector from './MenuSelector'
 
 export interface ProfileProps {}
 
@@ -45,9 +50,37 @@ const Profile: React.SFC<ProfileProps> = () => {
     const handleClose = () => {
         setAnchorEl(null)
     }
+    const menuSelector = [
+        {
+            handleClick: () => {},
+            icon: WidgetsIcon,
+            props: {},
+            text: 'Widgets',
+        },
+        {
+            handleClick: () => {},
+            icon: PersonIcon,
+            props: {},
+            text: 'Profile',
+        },
+        {
+            handleClick: () => {},
+            icon: FingerPrintIcon,
+            props: {},
+            text: 'Organisation Admin',
+        },
+        {
+            handleClick: () => {},
+            icon: ExitToAppIcon,
+            props: {},
+            text: 'Logout',
+        },
+    ]
 
     return (
         <Wrapper>
+            {/* TODO: find out a way to solve this */}
+            {/* <MenuSelector menuSelector={menuSelector} setDialog={() => {}} /> */}
             <WrapperChips>
                 <FlyChips
                     aria-controls='simple-menu'
@@ -58,7 +91,6 @@ const Profile: React.SFC<ProfileProps> = () => {
                     variant='outlined'
                     color='primary'
                 />
-                <ArrowDown color='primary' />
             </WrapperChips>
             <Menu
                 id='simple-menu'
@@ -67,13 +99,12 @@ const Profile: React.SFC<ProfileProps> = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
+                <Divider margin='0' />
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <Divider margin='0' />
                 <MenuItem onClick={handleClose}>Orgnisation Admin</MenuItem>
-                <Divider margin='0' />
                 <MenuItem onClick={handleClose}>Start Tour</MenuItem>
-                <Divider margin='0' />
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <Divider margin='0' />
             </Menu>
         </Wrapper>
     )

@@ -1,3 +1,4 @@
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
 import Fecth from 'components/Fetch'
@@ -11,14 +12,17 @@ import * as React from 'react'
 export interface MissionsProps {
     item: any
     setDialog: any
+    width: any
 }
 
-const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
+const Missions: React.SFC<MissionsProps> = ({ item, setDialog, width }) => {
+    const isMobile = isWidthUp(width, 'xs')
+
     const onAdd = () => {
         setDialog({
             actions: null,
             children: React.createElement(MissionForm, null),
-            fullScreen: false,
+            fullScreen: isMobile,
             fullWidth: true,
             maxWidth: 'md',
             open: true,
@@ -105,4 +109,4 @@ const Missions: React.SFC<MissionsProps> = ({ item, setDialog }) => {
     )
 }
 
-export default Missions
+export default withWidth()(Missions)

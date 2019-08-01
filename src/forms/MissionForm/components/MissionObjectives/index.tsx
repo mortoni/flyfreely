@@ -3,10 +3,11 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import FieldError from 'components/FieldError'
 import InputField from 'components/Input'
+import Map from 'components/Map'
 import { Field, Form, Formik } from 'formik'
 import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
-import validation from '../Validation'
+import { withTheme } from 'styled-components'
+import validation from './validation'
 
 interface MissionObjectivesProps {
     initialValues: any
@@ -40,7 +41,7 @@ const MissionObjectives: React.SFC<MissionObjectivesProps> = ({
                             <Grid item xs={12}>
                                 <Grid container spacing={2}>
                                     {/* Name */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         <Field
                                             name='name'
                                             label='Name'
@@ -50,7 +51,7 @@ const MissionObjectives: React.SFC<MissionObjectivesProps> = ({
                                         <FieldError name='name' />
                                     </Grid>
                                     {/* Objectives */}
-                                    <Grid item xs={12}>
+                                    <Grid item xs={12} md={6}>
                                         <Field
                                             name='objective'
                                             label='Objective'
@@ -67,17 +68,28 @@ const MissionObjectives: React.SFC<MissionObjectivesProps> = ({
                                             component={InputField}
                                             required
                                         />
-                                        <FieldError name='objective' />
+                                        <FieldError name='location' />
                                     </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
+                        {/* Map */}
+                        <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <Box width='100%' display='flex'>
+                                    <Map />
+                                </Box>
+                            </Grid>
+                        </Grid>
                         <Box mt={2} mb={1}>
-                            <Grid container spacing={2} alignItems='flex-end'>
-                                <Grid item xs={12}>
+                            <Grid container spacing={2} justify='space-between'>
+                                <Grid item>
                                     <Button color='primary' disabled>
                                         Back
                                     </Button>
+                                </Grid>
+
+                                <Grid item>
                                     <Button
                                         color='primary'
                                         onClick={handleSubmit}

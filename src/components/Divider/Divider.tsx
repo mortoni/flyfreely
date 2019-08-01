@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
 interface DividerComponentProps {
     margin?: string
@@ -28,4 +28,4 @@ const DividerComponent: React.SFC<DividerComponentProps> = () => <Divider />
 
 DividerComponent.defaultProps = defaultProps
 
-export default withTheme(DividerComponent)
+export default DividerComponent

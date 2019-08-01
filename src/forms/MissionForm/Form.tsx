@@ -1,7 +1,5 @@
 import Grid from '@material-ui/core/Grid'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
-import Stepper from '@material-ui/core/Stepper'
+import Stepper from 'components/Stepper'
 import * as React from 'react'
 import MissionCreated from './components/MissionCreated'
 import MissionObjective from './components/MissionObjectives'
@@ -65,20 +63,14 @@ const Form: React.SFC<FormProps> = ({
         {
             component: MissionCreated,
             label: 'Done',
-            onComplete: null,
+            onComplete: handleFinalStep,
         },
     ]
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Stepper activeStep={activeStep} orientation='horizontal'>
-                    {steps.map((item) => (
-                        <Step key={item.label} completed={false}>
-                            <StepLabel>{item.label}</StepLabel>
-                        </Step>
-                    ))}
-                </Stepper>
+                <Stepper steps={steps} activeStep={activeStep} />
             </Grid>
             <Grid item xs={12}>
                 {React.createElement(steps[activeStep].component, {
