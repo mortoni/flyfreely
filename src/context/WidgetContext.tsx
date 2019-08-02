@@ -38,7 +38,7 @@ export interface WidgetContextInterface {
     handleWidget: any
 }
 
-export const defaultWidgets = [
+export const defaultWidgets: WidgetInterface[] = [
     {
         component: Missions,
         icon: ListIcon,
