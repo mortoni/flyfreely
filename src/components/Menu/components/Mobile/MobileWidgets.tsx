@@ -6,15 +6,13 @@ import MenuOptions from '../MenuOptions'
 
 export interface MobileProfileProps {
     theme: any
-    menu: any
-    setMenu: any
 }
 
-const MobileProfile: React.SFC<MobileProfileProps> = ({ ...props }) => (
+const MobileProfile: React.SFC<MobileProfileProps> = ({ theme }) => (
     <Box component='div'>
         <Divider />
 
-        <MenuOptions {...props} />
+        <MenuOptions />
 
         <Divider />
     </Box>

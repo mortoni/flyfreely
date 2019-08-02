@@ -9,8 +9,7 @@ import MenuOptions from '../MenuOptions'
 import Profile from '../Profile'
 
 export interface DesktopProps {
-    menu: any
-    setMenu: any
+    setDialog: any
     theme: any
 }
 

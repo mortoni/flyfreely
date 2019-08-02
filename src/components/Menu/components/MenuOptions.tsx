@@ -2,13 +2,12 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+import { WidgetContext, WidgetContextInterface } from 'context/WidgetContext'
+
 import * as React from 'react'
 import styled from 'styled-components'
 
-export interface MenuOptionsProps {
-    menu: any
-    setMenu: any
-}
+export interface MenuOptionsProps {}
 
 const FlyCheckbox = styled(Checkbox)`
     && {
@@ -30,32 +29,32 @@ const FlyItem = styled(MenuItem)`
     }
 `
 
-const MenuOptions: React.SFC<MenuOptionsProps> = ({ menu, setMenu }) => {
-    const menuChange = (item: any, index: number) => {
-        menu[index] = { ...item, selected: !item.selected }
-        setMenu([...menu])
-    }
+const MenuOptions: React.SFC<MenuOptionsProps> = () => (
+    <WidgetContext.Consumer>
+        {({ widgets, handleWidget }: WidgetContextInterface) => (
+            <MenuList>
+                {widgets.map((item: any, index: number) => (
+                    <FlyItem key={item.label}>
+                        {React.createElement(item.icon, {
+                            key: item.key,
+                        })}
+                        <FlyLabel
+                            value={item.key}
+                            control={
+                                <FlyCheckbox
+                                    color='primary'
+                                    checked={item.selected}
+                                    onChange={() => handleWidget(item, index)}
+                                />
+                            }
+                            label={item.label}
+                            labelPlacement='start'
+                        />
+                    </FlyItem>
+                ))}
+            </MenuList>
+        )}
+    </WidgetContext.Consumer>
+)
 
-    return (
-        <MenuList>
-            {menu.map((item: any, index: number) => (
-                <FlyItem key={item.label}>
-                    {React.createElement(item.icon, { key: item.key })}
-                    <FlyLabel
-                        value={item.key}
-                        control={
-                            <FlyCheckbox
-                                color='primary'
-                                checked={item.selected}
-                                onChange={() => menuChange(item, index)}
-                            />
-                        }
-                        label={item.label}
-                        labelPlacement='start'
-                    />
-                </FlyItem>
-            ))}
-        </MenuList>
-    )
-}
 export default MenuOptions

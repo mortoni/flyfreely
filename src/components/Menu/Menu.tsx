@@ -1,26 +1,22 @@
 import Hidden from '@material-ui/core/Hidden'
 import * as React from 'react'
-import { withTheme } from 'styled-components'
 import Desktop from './components/Desktop'
 import Mobile from './components/Mobile'
 
 export interface MenuProps {
-    menu: any
-    setMenu: any
-    theme: any
     setDialog: any
 }
 
-const Menu: React.SFC<MenuProps> = ({ ...props }) => (
+const Menu: React.SFC<MenuProps> = ({ setDialog }) => (
     <>
         <Hidden only={['xs', 'sm']}>
-            <Desktop {...props} />
+            <Desktop setDialog={setDialog} />
         </Hidden>
 
         <Hidden only={['md', 'lg', 'xl']}>
-            <Mobile {...props} />
+            <Mobile setDialog={setDialog} />
         </Hidden>
     </>
 )
 
-export default withTheme(Menu)
+export default Menu

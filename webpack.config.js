@@ -10,6 +10,7 @@ module.exports = {
             widgets: path.resolve('src', 'widgets'),
             assets: path.resolve('src', 'assets'),
             database: path.resolve('src', 'database'),
+            context: path.resolve('src', 'context'),
         },
     },
     module: {

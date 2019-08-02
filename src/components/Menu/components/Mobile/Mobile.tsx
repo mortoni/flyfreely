@@ -12,8 +12,6 @@ import MenuSelector from '../MenuSelector'
 import MobileWidgets from './MobileWidgets'
 
 export interface MobileProps {
-    menu: any
-    setMenu: any
     theme: any
     setDialog: any
 }
@@ -46,11 +44,11 @@ const AvatarContainer = styled.div`
     display: flex;
 `
 
-const Mobile: React.SFC<MobileProps> = ({ setDialog, ...props }) => {
+const Mobile: React.SFC<MobileProps> = ({ setDialog }) => {
     const handleOpenDialog = () => {
         setDialog({
             actions: null,
-            children: <MobileWidgets {...props} />,
+            children: <MobileWidgets />,
             fullScreen: true,
             fullWidth: true,
             maxWidth: 'lg',
@@ -91,7 +89,6 @@ const Mobile: React.SFC<MobileProps> = ({ setDialog, ...props }) => {
                 <MenuSelector
                     menuSelector={menuSelector}
                     setDialog={setDialog}
-                    {...props}
                 />
             </IconContainer>
             <NameContainer>
