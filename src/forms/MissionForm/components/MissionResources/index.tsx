@@ -1,3 +1,4 @@
+import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -5,6 +6,8 @@ import Input from 'components/Input'
 import Select from 'components/Select'
 import { Field, Form, Formik } from 'formik'
 import * as React from 'react'
+import Crew from '../Crew'
+import validation from './validation'
 
 export interface MissionResourcesProps {
     initialValues: any
@@ -61,14 +64,12 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
     return (
         <Formik
             initialValues={{
+                crew: initialValues.crew,
                 operationType: initialValues.operationType,
             }}
             enableReinitialize
             validateOnBlur={false}
-            // validationSchema={validation({
-            //     maxPassengers,
-            //     maxChildren,
-            // })}
+            validationSchema={validation({})}
             onSubmit={onComplete}
             render={({ values, errors, handleSubmit }) => {
                 return (
@@ -138,8 +139,12 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                                         {/* <FieldError name='rpa' /> */}
                                     </Grid>
                                     {/* Crew */}
-                                    <Grid item xs={12} md={6}>
-                                        Crew
+                                    <Grid item xs={12}>
+                                        <Field
+                                            name='crew'
+                                            label='Crew'
+                                            component={Crew}
+                                        />
                                     </Grid>
 
                                     {/* Crew Notes */}
@@ -153,24 +158,31 @@ const MissionResources: React.SFC<MissionResourcesProps> = ({
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Button
-                                    onClick={() =>
-                                        onBack({
-                                            ...initialValues,
-                                            ...values,
-                                        })
-                                    }
-                                >
-                                    Back
-                                </Button>
+                        <Box mt={2} mb={1}>
+                            <Grid container spacing={2} justify='space-between'>
+                                <Grid item>
+                                    <Button
+                                        onClick={() =>
+                                            onBack({
+                                                ...initialValues,
+                                                ...values,
+                                            })
+                                        }
+                                    >
+                                        Back
+                                    </Button>
+                                </Grid>
 
-                                <Button onClick={handleSubmit} color='primary'>
-                                    Next
-                                </Button>
+                                <Grid item>
+                                    <Button
+                                        color='primary'
+                                        onClick={handleSubmit}
+                                    >
+                                        Next
+                                    </Button>
+                                </Grid>
                             </Grid>
-                        </Grid>
+                        </Box>
                     </Form>
                 )
             }}

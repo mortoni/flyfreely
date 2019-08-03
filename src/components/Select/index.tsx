@@ -7,10 +7,10 @@ interface SelectFieldProps {
     label: string
     field: any
     form: any
-    type: string
-    ControlProps: any
-    SelectProps: any
-    required: boolean
+    type?: string
+    ControlProps?: any
+    SelectProps?: any
+    required?: boolean
 }
 
 const SelectField: React.SFC<SelectFieldProps> = ({

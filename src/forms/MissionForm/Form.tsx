@@ -45,11 +45,11 @@ const Form: React.SFC<FormProps> = ({
         [values, setValues, setActiveStep, handleSubmit],
     )
     const steps = [
-        {
-            component: MissionObjective,
-            label: 'Objectives',
-            onComplete: handleNextStep,
-        },
+        // {
+        //     component: MissionObjective,
+        //     label: 'Objectives',
+        //     onComplete: handleNextStep,
+        // },
         {
             component: MissionResources,
             label: 'Resources',

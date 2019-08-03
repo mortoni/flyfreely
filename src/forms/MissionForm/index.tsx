@@ -41,7 +41,7 @@ const MissionForm: React.SFC<MissionFormProps> = ({
 }) => (
     <Formik
         initialValues={{
-            crew: '',
+            crew: [],
             crewNotes: '',
             dayTime: '',
             emergencyContacts: '',
