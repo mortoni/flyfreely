@@ -9,7 +9,6 @@ import Divider from 'components/Divider'
 import * as React from 'react'
 
 interface MenuSelectorProps {
-    setDialog: any
     menuSelector: any
     children?: any
 }
@@ -48,7 +47,6 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem)
 
 const MenuSelector: React.SFC<MenuSelectorProps> = ({
-    setDialog,
     menuSelector,
     children,
     ...props

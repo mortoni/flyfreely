@@ -9,7 +9,6 @@ import MenuOptions from '../MenuOptions'
 import Profile from '../Profile'
 
 export interface DesktopProps {
-    setDialog: any
     theme: any
 }
 
@@ -34,7 +33,7 @@ const OrganisationLogo = styled.div`
     display: flex;
 `
 
-const Desktop: React.SFC<DesktopProps> = ({ ...props }) => {
+const Desktop: React.SFC<DesktopProps> = () => {
     return (
         <FlyBox component='div' mt={1} ml={1}>
             <Paper>
@@ -46,7 +45,7 @@ const Desktop: React.SFC<DesktopProps> = ({ ...props }) => {
 
                 <Divider />
 
-                <MenuOptions {...props} />
+                <MenuOptions />
 
                 <Divider />
             </Paper>

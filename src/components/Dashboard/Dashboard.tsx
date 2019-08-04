@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import Dialog, { FlyDialogProps } from 'components/Dialog'
 import Menu from 'components/Menu'
+import { DialogContex } from 'context/DialogContex'
 import { WidgetContex } from 'context/WidgetContext'
 import * as React from 'react'
 import styled from 'styled-components'
@@ -23,23 +24,13 @@ const Container = styled(Grid)`
 `
 
 const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
-    const defaultDialog: FlyDialogProps = {
-        actions: null,
-        children: null,
-        fullScreen: false,
-        fullWidth: true,
-        maxWidth: 'md',
-        open: false,
-        title: '',
-    }
-    const [dialogProps, setDialog] = React.useState(defaultDialog)
     const { widgets } = React.useContext(WidgetContex)
+    const { dialog, dispatch } = React.useContext(DialogContex)
 
     const loadWidgets = widgets.map((item: any) =>
         React.createElement(item.component, {
             item,
             key: item.key,
-            setDialog,
         }),
     )
 
@@ -47,7 +38,7 @@ const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
 
     return (
         <Container container>
-            <Menu setDialog={setDialog} />
+            <Menu />
 
             <FlyBox ml={isMediumUp ? 30 : 0} pt={isMediumUp ? 0 : 5}>
                 <Grid container spacing={0}>
@@ -56,13 +47,8 @@ const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
             </FlyBox>
 
             <Dialog
-                {...dialogProps}
-                handleClose={() =>
-                    setDialog({
-                        ...defaultDialog,
-                        open: false,
-                    })
-                }
+                {...dialog}
+                handleClose={() => dispatch({ type: 'close' })}
             />
         </Container>
     )

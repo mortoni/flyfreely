@@ -12,6 +12,8 @@ import { addDecorator, addParameters, configure } from '@storybook/react'
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import { ThemeProvider as StyledProvider } from 'styled-components'
+// TODO: wrap up all the context in one
+import { DialogContextProvider } from '../src/context/DialogContex'
 import { WidgetContextProvider } from '../src/context/WidgetContext'
 import themes from '../src/theme'
 
@@ -27,7 +29,11 @@ addDecorator((story) => {
                 <CssBaseline />
                 <StyledProvider theme={createMuiTheme(themes[theme])}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <WidgetContextProvider>{story()}</WidgetContextProvider>
+                        <WidgetContextProvider>
+                            <DialogContextProvider>
+                                {story()}
+                            </DialogContextProvider>
+                        </WidgetContextProvider>
                     </MuiPickersUtilsProvider>
                 </StyledProvider>
             </ThemeProvider>

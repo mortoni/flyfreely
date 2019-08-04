@@ -3,18 +3,14 @@ import * as React from 'react'
 import Desktop from './components/Desktop'
 import Mobile from './components/Mobile'
 
-export interface MenuProps {
-    setDialog: any
-}
-
-const Menu: React.SFC<MenuProps> = ({ setDialog }) => (
+const Menu: React.SFC = () => (
     <>
         <Hidden only={['xs', 'sm']}>
-            <Desktop setDialog={setDialog} />
+            <Desktop />
         </Hidden>
 
         <Hidden only={['md', 'lg', 'xl']}>
-            <Mobile setDialog={setDialog} />
+            <Mobile />
         </Hidden>
     </>
 )

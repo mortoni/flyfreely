@@ -6,6 +6,7 @@ import FingerPrintIcon from '@material-ui/icons/Fingerprint'
 import PersonIcon from '@material-ui/icons/Person'
 import WidgetsIcon from '@material-ui/icons/Widgets'
 import demo = require('assets/demo.png')
+import { DialogContex } from 'context/DialogContex'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 import MenuSelector from '../MenuSelector'
@@ -13,7 +14,6 @@ import MobileWidgets from './MobileWidgets'
 
 export interface MobileProps {
     theme: any
-    setDialog: any
 }
 
 const FlyBox = styled(Box)`
@@ -44,18 +44,22 @@ const AvatarContainer = styled.div`
     display: flex;
 `
 
-const Mobile: React.SFC<MobileProps> = ({ setDialog }) => {
-    const handleOpenDialog = () => {
-        setDialog({
-            actions: null,
-            children: <MobileWidgets />,
-            fullScreen: true,
-            fullWidth: true,
-            maxWidth: 'lg',
-            open: true,
-            title: 'Widgets',
+const Mobile: React.SFC<MobileProps> = () => {
+    const { dispatch } = React.useContext(DialogContex)
+
+    const handleOpenDialog = () =>
+        dispatch({
+            payload: {
+                actions: null,
+                children: <MobileWidgets />,
+                fullScreen: true,
+                fullWidth: true,
+                maxWidth: 'lg',
+                open: true,
+                title: 'Widgets',
+            },
+            type: 'open',
         })
-    }
 
     const menuSelector = [
         {
@@ -86,10 +90,7 @@ const Mobile: React.SFC<MobileProps> = ({ setDialog }) => {
     return (
         <FlyBox component='div'>
             <IconContainer>
-                <MenuSelector
-                    menuSelector={menuSelector}
-                    setDialog={setDialog}
-                />
+                <MenuSelector menuSelector={menuSelector} />
             </IconContainer>
             <NameContainer>
                 <Typography color='secondary'>Own ReOC Admin</Typography>
