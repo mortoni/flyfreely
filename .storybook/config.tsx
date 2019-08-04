@@ -9,10 +9,10 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import { select, withKnobs } from '@storybook/addon-knobs/react'
 import { addDecorator, addParameters, configure } from '@storybook/react'
-
 import * as React from 'react'
 import { jsxDecorator } from 'storybook-addon-jsx'
 import { ThemeProvider as StyledProvider } from 'styled-components'
+import { WidgetContextProvider } from '../src/context/WidgetContext'
 import themes from '../src/theme'
 
 addDecorator((story) => {
@@ -27,7 +27,7 @@ addDecorator((story) => {
                 <CssBaseline />
                 <StyledProvider theme={createMuiTheme(themes[theme])}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        {story()}
+                        <WidgetContextProvider>{story()}</WidgetContextProvider>
                     </MuiPickersUtilsProvider>
                 </StyledProvider>
             </ThemeProvider>

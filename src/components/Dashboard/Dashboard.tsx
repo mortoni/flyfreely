@@ -3,11 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import Dialog, { FlyDialogProps } from 'components/Dialog'
 import Menu from 'components/Menu'
-import {
-    defaultWidgets,
-    WidgetContext,
-    WidgetInterface,
-} from 'context/WidgetContext'
+import { WidgetContex } from 'context/WidgetContext'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -37,10 +33,9 @@ const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
         title: '',
     }
     const [dialogProps, setDialog] = React.useState(defaultDialog)
+    const { widgets } = React.useContext(WidgetContex)
 
-    const [widgets, setWidget] = React.useState(defaultWidgets)
-
-    const loadWidgets = widgets.map((item) =>
+    const loadWidgets = widgets.map((item: any) =>
         React.createElement(item.component, {
             item,
             key: item.key,
@@ -50,33 +45,26 @@ const Dashboard: React.SFC<DashboardProps> = ({ width }) => {
 
     const isMediumUp = isWidthUp('sm', width)
 
-    const handleWidget = (widget: WidgetInterface, index: number) => {
-        widgets[index] = { ...widget, selected: !widget.selected }
-        setWidget([...widgets])
-    }
-
     return (
-        <WidgetContext.Provider value={{ widgets, handleWidget }}>
-            <Container container>
-                <Menu setDialog={setDialog} />
+        <Container container>
+            <Menu setDialog={setDialog} />
 
-                <FlyBox ml={isMediumUp ? 30 : 0} pt={isMediumUp ? 0 : 5}>
-                    <Grid container spacing={0}>
-                        {loadWidgets}
-                    </Grid>
-                </FlyBox>
+            <FlyBox ml={isMediumUp ? 30 : 0} pt={isMediumUp ? 0 : 5}>
+                <Grid container spacing={0}>
+                    {loadWidgets}
+                </Grid>
+            </FlyBox>
 
-                <Dialog
-                    {...dialogProps}
-                    handleClose={() =>
-                        setDialog({
-                            ...defaultDialog,
-                            open: false,
-                        })
-                    }
-                />
-            </Container>
-        </WidgetContext.Provider>
+            <Dialog
+                {...dialogProps}
+                handleClose={() =>
+                    setDialog({
+                        ...defaultDialog,
+                        open: false,
+                    })
+                }
+            />
+        </Container>
     )
 }
 export default withWidth()(Dashboard)
