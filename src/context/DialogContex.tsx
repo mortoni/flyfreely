@@ -10,11 +10,6 @@ interface DialogInterface {
     title: string
 }
 
-interface DialogContextInterface {
-    dialog: DialogInterface
-    dispatch: any
-}
-
 const initialState: DialogInterface = {
     actions: null,
     children: null,

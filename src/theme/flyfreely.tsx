@@ -1,4 +1,4 @@
-const colorPalette = {
+const palette = {
     grey: {
         100: '#FAFAFA',
         200: '#F5F5F5',
@@ -27,7 +27,7 @@ export default {
     overrides: {
         MuiStepLabel: {
             active: {
-                color: `${colorPalette.primary.main} !important`,
+                color: `${palette.primary.main} !important`,
             },
         },
         MuiStepper: {
@@ -36,30 +36,7 @@ export default {
             },
         },
     },
-    palette: {
-        grey: {
-            100: '#FAFAFA',
-            200: '#F5F5F5',
-            800: '#424248',
-            900: '#181822',
-        },
-        primary: {
-            contrastText: '#FFF',
-            dark: '#0052a4',
-            light: '#5facff',
-            main: '#037dd6',
-        },
-        secondary: {
-            contrastText: '#000000',
-            dark: '#FFF',
-            light: '#FFF',
-            main: '#FFF',
-        },
-        text: {
-            primary: '#464646',
-            secondary: '#464646',
-        },
-    },
+    palette,
     props: {},
     typography: {
         fontFamily: [
