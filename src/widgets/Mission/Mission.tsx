@@ -5,30 +5,33 @@ import Fecth from 'components/Fetch'
 import Spinner from 'components/Spinner'
 import Table from 'components/Table'
 import Widget from 'components/Widget'
+import { DialogContex } from 'context/DialogContex'
 import { format } from 'date-fns'
 import MissionForm from 'forms/MissionForm'
 import * as React from 'react'
 
 export interface MissionsProps {
     item: any
-    setDialog: any
     width: any
 }
 
-const Missions: React.SFC<MissionsProps> = ({ item, setDialog, width }) => {
+const Missions: React.SFC<MissionsProps> = ({ item, width }) => {
     const isMobile = isWidthUp(width, 'xs')
+    const { dispatch } = React.useContext(DialogContex)
 
-    const onAdd = () => {
-        setDialog({
-            actions: null,
-            children: React.createElement(MissionForm, null),
-            fullScreen: isMobile,
-            fullWidth: true,
-            maxWidth: 'md',
-            open: true,
-            title: 'New Mission',
+    const onAdd = () =>
+        dispatch({
+            payload: {
+                actions: null,
+                children: React.createElement(MissionForm, null),
+                fullScreen: isMobile,
+                fullWidth: true,
+                maxWidth: 'md',
+                open: true,
+                title: 'New Mission',
+            },
+            type: 'open',
         })
-    }
 
     const headerButtons = [
         {

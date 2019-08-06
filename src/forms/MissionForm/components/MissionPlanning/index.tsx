@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
+import DatePicker from 'components/DatePicker'
 import { Field, Form, Formik } from 'formik'
 import * as React from 'react'
 
@@ -36,10 +36,11 @@ const MissionPlanning: React.SFC<MissionPlanningProps> = ({
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
                                         <Field
-                                            name='name'
-                                            component={TextField}
+                                            label='Departure date'
+                                            name='departureDate'
+                                            component={DatePicker}
                                         />
-                                        {/* <FieldError name='flightType' /> */}
+                                        {/* <FieldError name="departureDate" /> */}
                                     </Grid>
                                 </Grid>
                             </Grid>

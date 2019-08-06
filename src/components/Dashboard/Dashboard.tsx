@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
-import Dialog, { FlyDialogProps } from 'components/Dialog'
+import Dialog from 'components/Dialog'
 import Menu from 'components/Menu'
 import { DialogContex } from 'context/DialogContex'
 import { WidgetContex } from 'context/WidgetContext'

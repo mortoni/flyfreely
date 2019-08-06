@@ -10,7 +10,7 @@ interface DialogInterface {
     title: string
 }
 
-interface DialogContexInterface {
+interface DialogContextInterface {
     dialog: DialogInterface
     dispatch: any
 }
