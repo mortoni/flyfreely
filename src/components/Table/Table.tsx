@@ -84,7 +84,7 @@ export interface TableProps {
 
 const FlyPaper = styled(Paper)`
     && {
-        background-color: #fafafa;
+        background-color: ${(props) => props.theme.palette.grey[100]};
     }
 `
 

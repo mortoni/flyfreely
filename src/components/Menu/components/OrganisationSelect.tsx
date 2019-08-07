@@ -3,12 +3,13 @@ import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 import styled from 'styled-components'
-// TODO:
+
 export interface OrganisationSelectProps {
     classes: any
     menu: any
 }
 
+// TODO: remove this styles and work with styled component
 const styles = (theme: any) => ({
     checkbox: {
         position: 'absolute',

@@ -6,7 +6,7 @@ import FingerPrintIcon from '@material-ui/icons/Fingerprint'
 import PersonIcon from '@material-ui/icons/Person'
 import WidgetsIcon from '@material-ui/icons/Widgets'
 import demo = require('assets/demo.png')
-import { DialogContex } from 'context/DialogContex'
+import { DialogContext } from 'context/DialogContext'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
 import MenuSelector from '../MenuSelector'
@@ -22,6 +22,7 @@ const FlyBox = styled(Box)`
     background-color: ${(props) => props.theme.palette.primary.main};
     display: inline-flex;
     width: 100%;
+    z-index: 11;
 `
 const IconContainer = styled.div`
     flex: 0.3;
@@ -45,7 +46,7 @@ const AvatarContainer = styled.div`
 `
 
 const Mobile: React.SFC<MobileProps> = () => {
-    const { dispatch } = React.useContext(DialogContex)
+    const { dispatch } = React.useContext(DialogContext)
 
     const handleOpenDialog = () =>
         dispatch({

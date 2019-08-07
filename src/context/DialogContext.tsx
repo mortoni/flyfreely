@@ -20,7 +20,7 @@ const initialState: DialogInterface = {
     title: '',
 }
 
-const DialogContex: any = React.createContext(initialState)
+const DialogContext: any = React.createContext(initialState)
 
 const reducer = (dialog: DialogInterface, action: any) => {
     switch (action.type) {
@@ -40,14 +40,16 @@ const DialogContextProvider: React.SFC<any> = ({ children }) => {
     const value = { dialog, dispatch }
 
     return (
-        <DialogContex.Provider value={value}>{children}</DialogContex.Provider>
+        <DialogContext.Provider value={value}>
+            {children}
+        </DialogContext.Provider>
     )
 }
 
-const DialogContexConsumer = DialogContex.Consumer
+const DialogContexConsumer = DialogContext.Consumer
 
 export {
-    DialogContex,
+    DialogContext,
     DialogContextProvider,
     DialogContexConsumer,
     DialogInterface,

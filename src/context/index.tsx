@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { DialogContextProvider } from './DialogContex'
+import { DialogContextProvider } from './DialogContext'
 import { WidgetContextProvider } from './WidgetContext'
 
 interface ContextInterface {

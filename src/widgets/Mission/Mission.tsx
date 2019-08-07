@@ -5,7 +5,7 @@ import Fecth from 'components/Fetch'
 import Spinner from 'components/Spinner'
 import Table from 'components/Table'
 import Widget from 'components/Widget'
-import { DialogContex } from 'context/DialogContex'
+import { DialogContext } from 'context/DialogContext'
 import { format } from 'date-fns'
 import MissionForm from 'forms/MissionForm'
 import * as React from 'react'
@@ -17,7 +17,7 @@ export interface MissionsProps {
 
 const Missions: React.SFC<MissionsProps> = ({ item, width }) => {
     const isMobile = isWidthUp(width, 'xs')
-    const { dispatch } = React.useContext(DialogContex)
+    const { dispatch } = React.useContext(DialogContext)
 
     const onAdd = () =>
         dispatch({

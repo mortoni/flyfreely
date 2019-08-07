@@ -5,11 +5,11 @@ import Mobile from './components/Mobile'
 
 const Menu: React.SFC = () => (
     <>
-        <Hidden only={['xs', 'sm']}>
+        <Hidden smDown>
             <Desktop />
         </Hidden>
 
-        <Hidden only={['md', 'lg', 'xl']}>
+        <Hidden mdUp>
             <Mobile />
         </Hidden>
     </>

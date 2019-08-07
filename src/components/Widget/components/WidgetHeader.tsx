@@ -8,7 +8,7 @@ interface WidgetHeaderProps {
 
 const ButtonWithIcon = styled(IconButton)<any>`
     && {
-        color: #fafafa;
+        color: ${(props) => props.theme.palette.grey[100]};
     }
 `
 

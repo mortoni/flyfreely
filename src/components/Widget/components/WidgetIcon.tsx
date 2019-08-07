@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 
+// TODO: Improve this component to work with styled component
 interface WidgetIconProps {
     classes: any
 }

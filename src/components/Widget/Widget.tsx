@@ -27,7 +27,7 @@ const WidgetContainer = styled.div`
 `
 
 const WidgetContent = styled(CardContent)`
-    background-color: #fafafa;
+    background-color: ${(props) => props.theme.palette.grey[100]};
 `
 
 const WidgetCard = styled(Card)`
@@ -35,7 +35,7 @@ const WidgetCard = styled(Card)`
 `
 
 const FlyCardActions = styled(CardActions)`
-    background-color: #fafafa;
+    background-color: ${(props) => props.theme.palette.grey[100]};
 `
 
 const FlyCardHeader = styled(CardHeader)`
@@ -43,7 +43,7 @@ const FlyCardHeader = styled(CardHeader)`
         background-color: ${(props) => props.theme.palette.primary.main};
         max-height: 65px;
         padding-left: 85px;
-        color: #fafafa;
+        color: ${(props) => props.theme.palette.grey[100]};
     }
 `
 

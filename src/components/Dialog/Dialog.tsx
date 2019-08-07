@@ -5,39 +5,26 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import CloseIcon from '@material-ui/icons/Close'
+import { DialogContext } from 'context/DialogContext'
 import * as React from 'react'
 import styled from 'styled-components'
 import DialogIcon from './components/DialogIcon'
-
-export interface FlyDialogProps {
-    title: string
-    children: any
-    actions?: any
-    fullWidth?: boolean
-    open: boolean
-    maxWidth?: any
-    fullScreen: boolean
-}
-
-interface OtherProps {
-    handleClose: any
-}
 
 const FlyDialogTitle = styled(DialogTitle)`
     background-color: ${(props) => props.theme.palette.primary.main};
     max-height: 65px;
     padding-left: 85px !important;
-    color: #fafafa;
+    color: ${(props) => props.theme.palette.grey[100]};
     overflow: hidden;
     display: flex;
     flex-direction: row;
 `
 const FlyDialogContent = styled(DialogContent)`
-    background-color: #fafafa;
+    background-color: ${(props) => props.theme.palette.grey[100]};
 `
 
 const FlyDialogActions = styled(DialogActions)`
-    background-color: #fafafa;
+    background-color: ${(props) => props.theme.palette.grey[100]};
 `
 
 const FlyDialog = styled(Dialog)``
@@ -48,24 +35,18 @@ const CloseButton = styled(IconButton)`
     top: 8px;
 `
 
-const FlyDialogProps: React.SFC<FlyDialogProps & OtherProps> = ({
-    title,
-    children,
-    actions,
-    fullWidth,
-    open,
-    maxWidth,
-    handleClose,
-    fullScreen,
-}) => {
+const FlyDialogProps: React.SFC = () => {
+    const { dialog, dispatch } = React.useContext(DialogContext)
+
     return (
         <FlyDialog
             disableBackdropClick
-            fullScreen={fullScreen}
-            fullWidth={fullWidth}
-            open={open}
-            onClose={handleClose}
-            maxWidth={maxWidth}
+            fullScreen={dialog.fullScreen}
+            fullWidth={dialog.fullWidth}
+            open={dialog.open}
+            onClose={() => dispatch({ type: 'close' })}
+            maxWidth={dialog.maxWidth}
+            {...dialog}
             aria-labelledby='max-width-dialog-title'
             PaperProps={{
                 style: {
@@ -76,18 +57,18 @@ const FlyDialogProps: React.SFC<FlyDialogProps & OtherProps> = ({
             <FlyDialogTitle disableTypography id='max-width-dialog-title'>
                 <DialogIcon />
 
-                <Typography variant='h6'>{title}</Typography>
+                <Typography variant='h6'>{dialog.title}</Typography>
                 <CloseButton
                     aria-label='Close'
                     color='inherit'
-                    onClick={handleClose}
+                    onClick={() => dispatch({ type: 'close' })}
                 >
                     <CloseIcon />
                 </CloseButton>
             </FlyDialogTitle>
 
-            <FlyDialogContent>{children}</FlyDialogContent>
-            <FlyDialogActions>{actions}</FlyDialogActions>
+            <FlyDialogContent>{dialog.children}</FlyDialogContent>
+            <FlyDialogActions>{dialog.actions}</FlyDialogActions>
         </FlyDialog>
     )
 }
