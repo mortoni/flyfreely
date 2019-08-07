@@ -1,6 +1,5 @@
 import MenuItem from '@material-ui/core/MenuItem'
 import TextField from '@material-ui/core/TextField'
-import { withStyles } from '@material-ui/styles'
 import * as React from 'react'
 import styled from 'styled-components'
 
@@ -8,18 +7,6 @@ export interface OrganisationSelectProps {
     classes: any
     menu: any
 }
-
-// TODO: remove this styles and work with styled component
-const styles = (theme: any) => ({
-    checkbox: {
-        position: 'absolute',
-        right: 0,
-    },
-    label: {
-        justifyContent: 'flex-end',
-        width: '100%',
-    },
-})
 
 const FlyInput = styled(TextField)`
     margin-left: ${(props) => props.theme.spacing(1)};
@@ -49,7 +36,7 @@ const OrganisationSelect: React.SFC<OrganisationSelectProps> = ({}) => {
             select
             label='Organisation'
             value={value}
-            onChange={() => setValue()}
+            onChange={() => setValue('org2')}
             margin='normal'
         >
             {organisations.map((option) => (
@@ -60,4 +47,4 @@ const OrganisationSelect: React.SFC<OrganisationSelectProps> = ({}) => {
         </FlyInput>
     )
 }
-export default withStyles(styles)(OrganisationSelect)
+export default OrganisationSelect

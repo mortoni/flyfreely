@@ -6,7 +6,6 @@ import styled, { withTheme } from 'styled-components'
 import {
     AnimateWidget,
     FooterButtons,
-    HeaderWithSelect,
     WidgetHeader,
     WidgetIcon,
 } from './components'
@@ -57,9 +56,6 @@ const Widget: React.SFC<WidgetProps> = ({
     ...props
 }) => {
     const getTitle = () => {
-        if (titleWithSelect) {
-            return <HeaderWithSelect />
-        }
         return title
     }
 
