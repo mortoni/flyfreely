@@ -67,7 +67,10 @@ const FlyDialogProps: React.SFC = () => {
                 </CloseButton>
             </FlyDialogTitle>
 
-            <FlyDialogContent>{dialog.children}</FlyDialogContent>
+            <FlyDialogContent>
+                {/* {React.createElement(dialog.children, {})} */}
+                {dialog.children}
+            </FlyDialogContent>
             <FlyDialogActions>{dialog.actions}</FlyDialogActions>
         </FlyDialog>
     )

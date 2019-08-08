@@ -27,7 +27,7 @@ const reducer = (dialog: DialogInterface, action: any) => {
         case 'reset':
             return initialState
         case 'open':
-            return { ...dialog, ...action.payload }
+            return { ...dialog, ...action.payload, open: true }
         case 'close':
             return { ...dialog, open: false }
         default:

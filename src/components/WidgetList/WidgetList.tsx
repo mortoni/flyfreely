@@ -26,7 +26,7 @@ const FlyItem = styled(MenuItem)`
     }
 `
 
-const MenuOptions: React.SFC = () => {
+const WidgetList: React.SFC = () => {
     const { widgets, dispatch } = React.useContext(WidgetContex)
     const toggleWidget = (index: number) =>
         dispatch({ type: 'toggle', payload: index })
@@ -56,4 +56,4 @@ const MenuOptions: React.SFC = () => {
     )
 }
 
-export default MenuOptions
+export default WidgetList
