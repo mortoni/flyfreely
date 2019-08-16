@@ -1,3 +1,5 @@
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
@@ -68,7 +70,9 @@ const Missions: React.SFC<MissionsProps> = ({ item, width }) => {
             render: (rowData: any) =>
                 rowData.missionCrewDetails &&
                 rowData.missionCrewDetails[0] &&
-                `${rowData.missionCrewDetails[0].person.firstName} ${rowData.missionCrewDetails[0].person.lastName}`,
+                `${rowData.missionCrewDetails[0].person.firstName} ${
+                    rowData.missionCrewDetails[0].person.lastName
+                }`,
             title: 'Crew',
         },
         { title: 'RPA', field: 'craftNicknames' },
@@ -98,13 +102,17 @@ const Missions: React.SFC<MissionsProps> = ({ item, width }) => {
                     item={item}
                 >
                     <Spinner condition={loading}>
-                        <Table
-                            columns={columns}
-                            data={data}
-                            options={options}
-                            actions={actions}
-                            localization={localization}
-                        />
+                        <Card>
+                            <CardContent>
+                                <Table
+                                    columns={columns}
+                                    data={data}
+                                    options={options}
+                                    actions={actions}
+                                    localization={localization}
+                                />
+                            </CardContent>
+                        </Card>
                     </Spinner>
                 </Widget>
             )}

@@ -50,6 +50,7 @@ const FlyDialogProps: React.SFC = () => {
             aria-labelledby='max-width-dialog-title'
             PaperProps={{
                 style: {
+                    height: '100%',
                     overflowY: 'unset',
                 },
             }}

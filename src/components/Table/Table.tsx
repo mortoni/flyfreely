@@ -1,4 +1,3 @@
-import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowUpward from '@material-ui/icons/ArrowUpward'
@@ -78,8 +77,11 @@ export interface TableProps {
     data: any
     actions?: any
     options?: any
-    localization: any
+    localization?: any
     classes?: any
+    editable?: any
+    style?: any
+    title?: any
 }
 
 const FlyPaper = styled(Paper)`
@@ -94,7 +96,10 @@ const Table: React.SFC<TableProps> = ({
     options,
     actions,
     localization,
+    editable,
     classes,
+    style,
+    title,
 }) => {
     return (
         <MaterialTable
@@ -102,12 +107,14 @@ const Table: React.SFC<TableProps> = ({
             columns={columns}
             actions={actions}
             localization={localization}
+            editable={editable}
             components={{
-                Container: (props) => <FlyPaper {...props} elevation={0} />,
+                Container: (item) => <FlyPaper {...item} elevation={0} />,
             }}
             data={data}
             icons={tableIcons}
-            title=''
+            title={title}
+            style={style}
         />
     )
 }

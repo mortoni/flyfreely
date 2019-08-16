@@ -10,11 +10,11 @@ import PersonIcon from '@material-ui/icons/Person'
 import WidgetsIcon from '@material-ui/icons/Widgets'
 import demo = require('assets/demo.png')
 import Menu, { MenuItemInterface } from 'components/Menu'
+import Profile from 'components/Profile'
 import WidgetList from 'components/WidgetList'
 import { DialogContext } from 'context/DialogContext'
 import * as React from 'react'
 import styled, { withTheme } from 'styled-components'
-
 export interface HeaderProps {
     theme: any
 }
@@ -64,6 +64,15 @@ const Header: React.SFC<HeaderProps> = () => {
                 })
                 break
             case 'profile':
+                dispatch({
+                    payload: {
+                        children: <Profile />,
+                        fullScreen: true,
+                        title: 'Profile',
+                    },
+                    type: 'open',
+                })
+                break
             case 'admin':
             case 'logout':
         }

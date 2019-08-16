@@ -10,6 +10,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import demo = require('assets/demo.png')
 import Divider from 'components/Divider'
 import Menu, { MenuItemInterface } from 'components/Menu'
+import Profile from 'components/Profile'
 import WidgetList from 'components/WidgetList'
 import { DialogContext } from 'context/DialogContext'
 import * as React from 'react'
@@ -47,6 +48,15 @@ const Sidebar: React.SFC = () => {
     const handleClick = (menu: string) => {
         switch (menu) {
             case 'profile':
+                dispatch({
+                    payload: {
+                        children: <Profile />,
+                        maxWidth: 'lg',
+                        title: 'Profile',
+                    },
+                    type: 'open',
+                })
+                break
             case 'admin':
             case 'logout':
         }

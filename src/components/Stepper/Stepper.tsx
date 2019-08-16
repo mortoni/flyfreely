@@ -8,16 +8,17 @@ import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import * as React from 'react'
 import { Else, If, Then } from 'react-if'
 
-export interface StepperProps {
+export interface StepperInterface {
     width: any
     steps: any
     activeStep: any
 }
 
-const StepperComponent: React.SFC<StepperProps> = ({
+const StepperComponent: React.SFC<StepperInterface> = ({
     width,
     steps,
     activeStep,
+    ...props
 }) => {
     const isMobile = isWidthUp(width, 'xs')
 
@@ -43,7 +44,7 @@ const StepperComponent: React.SFC<StepperProps> = ({
                 </Box>
             </Then>
             <Else>
-                <Stepper activeStep={activeStep} orientation='horizontal'>
+                <Stepper activeStep={activeStep} {...props}>
                     {steps.map((item: any) => (
                         <Step key={item.label} completed={false}>
                             <StepLabel color='textSecondary'>
