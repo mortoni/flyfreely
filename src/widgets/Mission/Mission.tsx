@@ -1,5 +1,3 @@
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import AddIcon from '@material-ui/icons/AddCircleOutline'
 import FileCopy from '@material-ui/icons/FileCopy'
@@ -102,17 +100,13 @@ const Missions: React.SFC<MissionsProps> = ({ item, width }) => {
                     item={item}
                 >
                     <Spinner condition={loading}>
-                        <Card>
-                            <CardContent>
-                                <Table
-                                    columns={columns}
-                                    data={data}
-                                    options={options}
-                                    actions={actions}
-                                    localization={localization}
-                                />
-                            </CardContent>
-                        </Card>
+                        <Table
+                            columns={columns}
+                            data={data}
+                            options={options}
+                            actions={actions}
+                            localization={localization}
+                        />
                     </Spinner>
                 </Widget>
             )}

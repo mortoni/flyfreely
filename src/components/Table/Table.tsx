@@ -1,3 +1,4 @@
+import { Card, CardContent } from '@material-ui/core'
 import Paper from '@material-ui/core/Paper'
 import AddBox from '@material-ui/icons/AddBox'
 import ArrowUpward from '@material-ui/icons/ArrowUpward'
@@ -90,6 +91,13 @@ const FlyPaper = styled(Paper)`
     }
 `
 
+const TableContainer = styled(Card)`
+    && {
+        background-color: transparent;
+        box-shadow: none;
+    }
+`
+
 const Table: React.SFC<TableProps> = ({
     columns,
     data,
@@ -102,20 +110,24 @@ const Table: React.SFC<TableProps> = ({
     title,
 }) => {
     return (
-        <MaterialTable
-            options={options}
-            columns={columns}
-            actions={actions}
-            localization={localization}
-            editable={editable}
-            components={{
-                Container: (item) => <FlyPaper {...item} elevation={0} />,
-            }}
-            data={data}
-            icons={tableIcons}
-            title={title}
-            style={style}
-        />
+        <TableContainer>
+            <CardContent>
+                <MaterialTable
+                    options={options}
+                    columns={columns}
+                    actions={actions}
+                    localization={localization}
+                    editable={editable}
+                    components={{
+                        Container: (item) => <FlyPaper {...item} elevation={0} />,
+                    }}
+                    data={data}
+                    icons={tableIcons}
+                    title={title}
+                    style={style}
+                />
+            </CardContent>
+        </TableContainer>
     )
 }
 

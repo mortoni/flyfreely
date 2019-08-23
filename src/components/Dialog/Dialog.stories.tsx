@@ -1,5 +1,5 @@
 import Button from '@material-ui/core/Button'
-import { action, boolean, object, select, text } from '@storybook/addon-knobs'
+import { boolean, select, text } from '@storybook/addon-knobs'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import Dialog from './Dialog'
